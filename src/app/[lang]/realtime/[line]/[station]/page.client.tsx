@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import type { Direction } from "@/api/interfaces";
 import { createURL, normaliseJson } from "@/api/nexttrain";
 import NextTrainTile from "@/components/NextTrainTile";
@@ -40,18 +40,16 @@ export const LineStationData = ({
     line: Line;
     station: string;
 }) => {
-    const { isLoading, error, data, status } = useQuery(
-        `realtime_${line}-${station}`,
-        () =>
+    const { isLoading, error, data, status } = useQuery({
+        queryKey: ["realtime", line, station],
+        queryFn: () =>
             fetch(createURL({ line, station }))
                 .then((res) => res.json())
                 .then(normaliseJson),
-        {
-            refetchInterval: 5000,
-            refetchIntervalInBackground: true,
-            refetchOnWindowFocus: false,
-        },
-    );
+        refetchInterval: 5000,
+        refetchIntervalInBackground: true,
+        refetchOnWindowFocus: false,
+    });
 
     const hasDownData = data && data.data.DOWN && data.data.DOWN.length !== 0;
     const hasUpData = data && data.data.UP && data.data.UP.length !== 0;
