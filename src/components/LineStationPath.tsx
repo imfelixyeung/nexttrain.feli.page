@@ -1,8 +1,7 @@
 import Link from "next/link";
 import type { FC } from "react";
 import lines from "@/data/lines.json";
-import { useTranslate } from "@/i18n/hooks/useTranslate";
-import { translate } from "@/locales";
+import { getDictionary } from "@/i18n/dictionary";
 import { createRealtimeLink } from "@/utils/createRealtimeLink";
 
 interface Props {
@@ -21,7 +20,6 @@ const LineStationPath: FC<Props> = ({ line, station }) => {
             ? lines[line].stations[indexOfStation + 1]
             : null;
 
-    const t = useTranslate(translate);
     return (
         <div className="grid grid-cols-3">
             <LineStationPathPin line={line} station={previousStation} />
@@ -37,12 +35,12 @@ interface LineStationPathPinProps {
     bold?: boolean;
 }
 
-const LineStationPathPin: FC<LineStationPathPinProps> = ({
+const LineStationPathPin: FC<LineStationPathPinProps> = async ({
     line,
     station,
     bold = false,
 }) => {
-    const t = useTranslate(translate);
+    const t = await getDictionary();
 
     if (!station) {
         return <div></div>;

@@ -1,14 +1,12 @@
-import type { FC } from "react";
 import lines from "@/data/lines.json";
-import { useTranslate } from "@/i18n/hooks/useTranslate";
-import { translate } from "@/locales";
+import { getDictionary } from "@/i18n/dictionary";
 
 interface Props {
     line: string;
 }
 
-const LineBadge: FC<Props> = ({ line }) => {
-    const t = useTranslate(translate);
+const LineBadge = async ({ line }: Props) => {
+    const t = await getDictionary();
     const colour = lines[line].colour;
     return (
         <div

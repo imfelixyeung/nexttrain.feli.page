@@ -2,7 +2,6 @@ import moment from "moment";
 import Link from "next/link";
 import type { FC } from "react";
 import type { Direction } from "@/api/interfaces";
-import { useTranslate } from "@/i18n/hooks/useTranslate";
 import { translate } from "@/locales";
 import { createRealtimeLink } from "@/utils/createRealtimeLink";
 import PlatformNumber from "./PlatformNumber";
@@ -16,7 +15,7 @@ interface Props {
 const NextTrainTile: FC<Props> = ({ data, line }) => {
     const { seq, dest, plat, time, ttnt, valid, source } = data;
 
-    const t = useTranslate(translate);
+    const t = translate;
     const momentTime = moment(time);
     const formattedDepartureTime = momentTime.format("HH:mm");
     const formattedArrivalTime = momentTime

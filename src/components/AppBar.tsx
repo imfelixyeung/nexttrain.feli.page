@@ -1,12 +1,14 @@
+"use client";
+
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { HiArrowLeft } from "react-icons/hi";
 import { MdOutlineTrain } from "react-icons/md";
 import LocaleChangerMenu from "./LocaleChangerMenu";
 
 const AppBar = () => {
-    const router = useRouter();
-    const atHome = router.asPath === "/";
+    const pathname = usePathname();
+    const atHome = pathname.lastIndexOf("/") === 0;
 
     return (
         <div className="sticky inset-y-0 top-0 z-50 navbar bg-primary text-primary-content">

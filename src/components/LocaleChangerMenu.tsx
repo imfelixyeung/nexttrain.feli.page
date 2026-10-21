@@ -1,17 +1,15 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { useRouter } from "next/router";
+import { useParams, useRouter } from "next/navigation";
 import { HiOutlineCheck, HiOutlineTranslate } from "react-icons/hi";
 import { availableLocales, defaultLocale } from "@/locales";
 
 const LocaleChangerMenu = () => {
     const router = useRouter();
+    let { lang } = useParams();
+    lang = lang?.toString();
 
     const handleLocaleChange = async (locale: string) => {
-        await router.push(
-            { pathname: router.pathname, query: router.query },
-            {},
-            { locale },
-        );
+        router.push(`/${locale}`);
     };
 
     return (
@@ -25,16 +23,14 @@ const LocaleChangerMenu = () => {
                     sideOffset={4}
                 >
                     <DropdownMenu.DropdownMenuRadioGroup
-                        value={router.locale ?? defaultLocale}
+                        value={lang ?? defaultLocale}
                         onValueChange={handleLocaleChange}
                     >
                         {availableLocales.map((locale) => (
                             <DropdownMenu.DropdownMenuRadioItem
                                 value={locale}
                                 key={locale}
-                                disabled={
-                                    locale === (router.locale ?? defaultLocale)
-                                }
+                                disabled={locale === (lang ?? defaultLocale)}
                                 className="relative flex items-center py-1 pl-6 pr-2 cursor-pointer hover:border-none hover:bg-gray-100 radix-disabled:cursor-not-allowed"
                             >
                                 <DropdownMenu.DropdownMenuItemIndicator className="absolute left-0 flex items-center justify-center w-6 py-1 text-lg">

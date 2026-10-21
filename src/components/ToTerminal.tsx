@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { useTranslate } from "@/i18n/hooks/useTranslate";
 import { translate } from "@/locales";
 
 interface Props {
@@ -8,7 +7,7 @@ interface Props {
 }
 
 const ToTerminal: FC<Props> = ({ line, station }) => {
-    const t = useTranslate(translate);
+    const t = translate;
     return (
         <div className="flex justify-center text-2xl font-semibold underline">
             {t("prepositions.to")} {t(`mtr.stations.${station}`)}

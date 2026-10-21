@@ -15,10 +15,6 @@ const nextConfig: NextConfig = {
             },
         },
     },
-    i18n: {
-        locales: ["en-HK", "zh-HK"],
-        defaultLocale: "en-HK",
-    },
 };
 
 export default nextConfig;

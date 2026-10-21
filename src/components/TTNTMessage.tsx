@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { useTranslate } from "@/i18n/hooks/useTranslate";
 import { translate } from "@/locales";
 
 interface Props {
@@ -7,7 +6,7 @@ interface Props {
 }
 
 const TTNTMessage: FC<Props> = ({ ttnt }) => {
-    const t = useTranslate(translate);
+    const t = translate;
 
     return ttnt == "0" ? (
         <div>
