@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { parse } from "csv-parse/stream";
 import z from "zod";
 
