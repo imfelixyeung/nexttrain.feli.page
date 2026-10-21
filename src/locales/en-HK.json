@@ -1,0 +1,62 @@
+{
+    "mtr": {
+        "lines": {
+            "AEL": "Airport Express",
+            "TCL": "Tung Chung Line",
+            "TKL": "Tseung Kwan O Line",
+            "TML": "Tuen Ma Line"
+        },
+        "stations": {
+            "AIR": "Airport",
+            "AUS": "Austin",
+            "AWE": "AsiaWorld Expo",
+            "CIO": "City One",
+            "CKT": "Che Kung Temple",
+            "DIH": "Diamond Hill",
+            "ETS": "East Tsim Sha Tsui",
+            "HAH": "Hang Hau",
+            "HEO": "Heng On",
+            "HIK": "Hin Keng",
+            "HOK": "Hong Kong",
+            "HOM": "Ho Man Tin",
+            "HUH": "Hung Hom",
+            "KAT": "Kai Tak",
+            "KOW": "Kowloon",
+            "KSR": "Kam Sheung Road",
+            "LAK": "Lai King",
+            "LHP": "LOHAS Park",
+            "LOP": "Long Ping",
+            "MEF": "Mei Foo",
+            "MOS": "Ma On Shan",
+            "NAC": "Nam Cheong",
+            "NOP": "North Point",
+            "OLY": "Olympic",
+            "POA": "Po Lam",
+            "QUB": "Quarry Bay",
+            "SHM": "Shek Mun",
+            "SIH": "Siu Hong",
+            "STW": "Sha Tin Wai",
+            "SUN": "Sunny Bay",
+            "SUW": "Sung Wong Toi",
+            "TAW": "Tai Wai",
+            "TIK": "Tiu Keng Leng",
+            "TIS": "Tin Shui Wai",
+            "TKO": "Tseung Kwan O",
+            "TKW": "To Kwa Wan",
+            "TSH": "Tai Shui Hang",
+            "TSY": "Tsing Yi",
+            "TUC": "Tung Chung",
+            "TUM": "Tuen Mun",
+            "TWW": "Tsuen Wan West",
+            "WKS": "Wu Kai Sha",
+            "YAT": "Yau Tong",
+            "YUL": "Yuen Long"
+        }
+    },
+    "prepositions": {
+        "to": "To"
+    },
+    "time": {
+        "mins": "mins"
+    }
+}

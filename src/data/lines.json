@@ -1,17 +1,29 @@
 {
     "AEL": {
-        "eng": "Airport Express",
-        "chi": "機場快線",
+        "terminals": {
+            "UP": "AWE",
+            "DOWN": "HOK"
+        },
+        "colour": "#0C5F66",
+        "colourClass": "mtr-line-AEL",
         "stations": ["HOK", "KOW", "TSY", "AIR", "AWE"]
     },
     "TCL": {
-        "eng": "Tung Chung Line",
-        "chi": "東涌綫",
+        "terminals": {
+            "UP": "TUC",
+            "DOWN": "HOK"
+        },
+        "colour": "#F07402",
+        "colourClass": "mtr-line-TCL",
         "stations": ["HOK", "KOW", "OLY", "NAC", "LAK", "TSY", "SUN", "TUC"]
     },
-    "WRL": {
-        "eng": "West Rail Line",
-        "chi": "西鐵綫",
+    "TML": {
+        "terminals": {
+            "UP": "TUM",
+            "DOWN": "WKS"
+        },
+        "colour": "#862718",
+        "colourClass": "mtr-line-TML",
         "stations": [
             "WKS",
             "MOS",
@@ -43,8 +55,12 @@
         ]
     },
     "TKL": {
-        "eng": "Tseung Kwan O Line",
-        "chi": "將軍澳線",
+        "terminals": {
+            "UP": "NOP",
+            "DOWN": "POA"
+        },
+        "colour": "#864AA7",
+        "colourClass": "mtr-line-TKL",
         "stations": ["NOP", "QUB", "YAT", "TIK", "TKO", "LHP", "HAH", "POA"]
     }
 }
