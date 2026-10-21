@@ -1,5 +1,6 @@
-import React, { FC } from "react";
-import lines from "data/lines.json";
+import type { FC } from "react";
+import lines from "@/data/lines.json";
+
 interface Props {
     line: string;
     platform: string;

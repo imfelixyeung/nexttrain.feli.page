@@ -1,11 +1,9 @@
-import React, { Fragment } from "react";
-import { Button } from "ui";
-import { useTranslate } from "i18n/hooks/useTranslate";
-import { translate } from "locales";
-import lines from "data/lines.json";
-import Link from "next/link";
 import { Tab } from "@headlessui/react";
-import { jc } from "utils/joinClasses";
+import Link from "next/link";
+import lines from "@/data/lines.json";
+import { useTranslate } from "@/i18n/hooks/useTranslate";
+import { translate } from "@/locales";
+import { jc } from "@/utils/joinClasses";
 
 const IndexPage = () => {
     const t = useTranslate(translate);
@@ -45,10 +43,9 @@ const IndexPage = () => {
                                     <li key={`${line}-${station}`}>
                                         <Link
                                             href={`/realtime/${line}/${station}`}
+                                            className="block w-full px-4 py-2 hover:underline hover:font-semibold"
                                         >
-                                            <a className="block w-full px-4 py-2 hover:underline hover:font-semibold">
-                                                {t(`mtr.stations.${station}`)}
-                                            </a>
+                                            {t(`mtr.stations.${station}`)}
                                         </Link>
                                     </li>
                                 ))}

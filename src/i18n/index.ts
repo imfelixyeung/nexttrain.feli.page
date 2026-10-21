@@ -2,7 +2,7 @@ const getDottedKeyFromObject = (
     object: {
         [key: string]: any;
     },
-    key: string
+    key: string,
 ): string => {
     const keyChunks = key.split(".");
     var data: any = object;

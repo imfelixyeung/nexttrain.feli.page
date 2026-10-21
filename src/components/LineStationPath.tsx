@@ -1,9 +1,9 @@
-import { useTranslate } from "i18n/hooks/useTranslate";
-import { translate } from "locales";
-import React, { FC } from "react";
-import lines from "data/lines.json";
 import Link from "next/link";
-import { createRealtimeLink } from "utils/createRealtimeLink";
+import type { FC } from "react";
+import lines from "@/data/lines.json";
+import { useTranslate } from "@/i18n/hooks/useTranslate";
+import { translate } from "@/locales";
+import { createRealtimeLink } from "@/utils/createRealtimeLink";
 
 interface Props {
     line: string;
@@ -57,7 +57,7 @@ const LineStationPathPin: FC<LineStationPathPinProps> = ({
         <div className="flex flex-col items-center justify-center">
             <div className={bold ? "font-bold line-clamp-1" : "line-clamp-1"}>
                 <Link href={createRealtimeLink(line, station)}>
-                    <a>{t(`mtr.stations.${station}`)}</a>
+                    {t(`mtr.stations.${station}`)}
                 </Link>
             </div>
             <div className="flex items-center w-full">

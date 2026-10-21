@@ -1,7 +1,7 @@
-import React, { FC } from "react";
-import lines from "data/lines.json";
-import { useTranslate } from "i18n/hooks/useTranslate";
-import { translate } from "locales";
+import type { FC } from "react";
+import lines from "@/data/lines.json";
+import { useTranslate } from "@/i18n/hooks/useTranslate";
+import { translate } from "@/locales";
 
 interface Props {
     line: string;

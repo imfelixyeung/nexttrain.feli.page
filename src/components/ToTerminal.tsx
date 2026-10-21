@@ -1,6 +1,6 @@
-import { useTranslate } from "i18n/hooks/useTranslate";
-import { translate } from "locales";
-import React, { FC } from "react";
+import type { FC } from "react";
+import { useTranslate } from "@/i18n/hooks/useTranslate";
+import { translate } from "@/locales";
 
 interface Props {
     station: string;

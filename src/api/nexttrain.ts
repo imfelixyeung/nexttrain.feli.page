@@ -1,9 +1,4 @@
-import {
-    Direction,
-    LineStation,
-    ResponseJson,
-    CreateURLOptions,
-} from "./interfaces";
+import type { CreateURLOptions, ResponseJson } from "./interfaces";
 
 const endpoint = "https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php";
 

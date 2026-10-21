@@ -1,12 +1,11 @@
-import Layout from "components/Layout";
-import Head from "next/head";
-import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import "styles/globals.css";
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import Layout from "@/components/Layout";
 
 const queryClient = new QueryClient();
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
     return (
         <QueryClientProvider client={queryClient}>
             <Layout>

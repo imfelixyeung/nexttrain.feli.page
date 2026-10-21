@@ -1,18 +1,15 @@
-import React, { useEffect } from "react";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import lines from "data/lines.json";
-import { useTranslate } from "i18n/hooks/useTranslate";
-import { availableLocales, translate } from "locales";
-import { useQuery } from "react-query";
-import { createURL, normaliseJson } from "api/nexttrain";
-import Link from "next/link";
-import { Direction } from "api/interfaces";
-import PlatformNumber from "components/PlatformNumber";
-import NextTrainTile from "components/NextTrainTile";
-import LineBadge from "components/LineBadge";
-import LineStationPath from "components/LineStationPath";
-import ToTerminal from "components/ToTerminal";
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
+import { useQuery } from "react-query";
+import type { Direction } from "@/api/interfaces";
+import { createURL, normaliseJson } from "@/api/nexttrain";
+import LineBadge from "@/components/LineBadge";
+import LineStationPath from "@/components/LineStationPath";
+import NextTrainTile from "@/components/NextTrainTile";
+import ToTerminal from "@/components/ToTerminal";
+import lines from "@/data/lines.json";
+import { useTranslate } from "@/i18n/hooks/useTranslate";
+import { availableLocales, translate } from "@/locales";
 
 interface Props {
     line: string;
@@ -31,7 +28,7 @@ const LineStationPage: NextPage<Props> = ({ line, station }) => {
             refetchInterval: 5000,
             refetchIntervalInBackground: true,
             refetchOnWindowFocus: false,
-        }
+        },
     );
 
     const renderDirection = (destination: string, data: Direction[]) => {
@@ -77,7 +74,7 @@ const LineStationPage: NextPage<Props> = ({ line, station }) => {
                     {hasDownData &&
                         renderDirection(
                             lines[line].terminals.DOWN,
-                            data.data.DOWN
+                            data.data.DOWN,
                         )}
                     {hasUpData &&
                         renderDirection(lines[line].terminals.UP, data.data.UP)}
@@ -100,15 +97,14 @@ export default LineStationPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const paths = Object.keys(lines)
-        .map((line) =>
+        .flatMap((line) =>
             lines[line].stations.map((station: string) =>
                 availableLocales.map((locale) => ({
                     params: { line, station },
                     locale,
-                }))
-            )
+                })),
+            ),
         )
-        .flat()
         .flat();
 
     return {

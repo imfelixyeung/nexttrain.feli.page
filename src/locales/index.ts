@@ -1,7 +1,6 @@
+import { createTranslate, type LocaleLookup } from "@/i18n";
 import enHK from "./en-HK.json";
 import zhHK from "./zh-HK.json";
-
-import { createTranslate, LocaleLookup } from "i18n";
 
 const localeLookup: LocaleLookup = {
     "en-HK": enHK,

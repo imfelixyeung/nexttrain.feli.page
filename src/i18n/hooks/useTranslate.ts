@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { TranslateFunction } from "../index";
+import type { TranslateFunction } from "../index";
 
 export const useTranslate = (translateFunction: TranslateFunction) => {
     const { locale } = useRouter();

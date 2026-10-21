@@ -1,8 +1,7 @@
-import React from "react";
-import { availableLocales, defaultLocale } from "locales";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useRouter } from "next/router";
 import { HiOutlineCheck, HiOutlineTranslate } from "react-icons/hi";
+import { availableLocales, defaultLocale } from "@/locales";
 
 const LocaleChangerMenu = () => {
     const router = useRouter();
@@ -11,7 +10,7 @@ const LocaleChangerMenu = () => {
         await router.push(
             { pathname: router.pathname, query: router.query },
             {},
-            { locale }
+            { locale },
         );
     };
 

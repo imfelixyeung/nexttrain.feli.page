@@ -1,11 +1,11 @@
-import { Direction } from "api/interfaces";
-import { useTranslate } from "i18n/hooks/useTranslate";
-import { translate } from "locales";
-import Link from "next/link";
-import React, { FC } from "react";
-import { createRealtimeLink } from "utils/createRealtimeLink";
-import PlatformNumber from "./PlatformNumber";
 import moment from "moment";
+import Link from "next/link";
+import type { FC } from "react";
+import type { Direction } from "@/api/interfaces";
+import { useTranslate } from "@/i18n/hooks/useTranslate";
+import { translate } from "@/locales";
+import { createRealtimeLink } from "@/utils/createRealtimeLink";
+import PlatformNumber from "./PlatformNumber";
 import TTNTMessage from "./TTNTMessage";
 
 interface Props {
@@ -33,10 +33,7 @@ const NextTrainTile: FC<Props> = ({ data, line }) => {
                     {/* <div>{t(`mtr.lines.${line}`)}</div> */}
                     <div>
                         <Link href={createRealtimeLink(line, dest)}>
-                            <a>
-                                {t("prepositions.to")}{" "}
-                                {t(`mtr.stations.${dest}`)}
-                            </a>
+                            {t("prepositions.to")} {t(`mtr.stations.${dest}`)}
                         </Link>
                     </div>
                 </div>
