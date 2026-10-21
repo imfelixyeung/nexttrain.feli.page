@@ -1,8 +1,7 @@
 import type { GetStaticPaths, Metadata } from "next";
 import LineBadge from "@/components/LineBadge";
 import LineStationPath from "@/components/LineStationPath";
-import { assertValidLine, lineIds } from "@/data/lines";
-import lines from "@/data/lines.json";
+import { assertValidLine, lineIds, lines } from "@/data/lines";
 import { getDictionary } from "@/i18n/dictionary";
 import { availableLocales } from "@/locales";
 import { LineStationData } from "./page.client";

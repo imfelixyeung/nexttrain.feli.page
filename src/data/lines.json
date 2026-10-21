@@ -1,29 +1,9 @@
 {
-    "AEL": {
-        "terminals": {
-            "UP": "AWE",
-            "DOWN": "HOK"
-        },
-        "colour": "#0C5F66",
-        "colourClass": "mtr-line-AEL",
-        "stations": ["HOK", "KOW", "TSY", "AIR", "AWE"]
-    },
+    "AEL": { "stations": ["HOK", "KOW", "TSY", "AIR", "AWE"] },
     "TCL": {
-        "terminals": {
-            "UP": "TUC",
-            "DOWN": "HOK"
-        },
-        "colour": "#F07402",
-        "colourClass": "mtr-line-TCL",
         "stations": ["HOK", "KOW", "OLY", "NAC", "LAK", "TSY", "SUN", "TUC"]
     },
     "TML": {
-        "terminals": {
-            "UP": "TUM",
-            "DOWN": "WKS"
-        },
-        "colour": "#862718",
-        "colourClass": "mtr-line-TML",
         "stations": [
             "WKS",
             "MOS",
@@ -55,12 +35,89 @@
         ]
     },
     "TKL": {
-        "terminals": {
-            "UP": "NOP",
-            "DOWN": "POA"
-        },
-        "colour": "#864AA7",
-        "colourClass": "mtr-line-TKL",
-        "stations": ["NOP", "QUB", "YAT", "TIK", "TKO", "LHP", "HAH", "POA"]
-    }
+        "stations": ["NOP", "QUB", "YAT", "TIK", "TKO", "HAH", "POA", "LHP"]
+    },
+    "EAL": {
+        "stations": [
+            "ADM",
+            "EXC",
+            "HUH",
+            "MKK",
+            "KOT",
+            "TAW",
+            "SHT",
+            "FOT",
+            "UNI",
+            "TAP",
+            "TWO",
+            "FAN",
+            "SHS",
+            "LOW",
+            "LMC"
+        ]
+    },
+    "SIL": { "stations": ["ADM", "OCP", "WCH", "LET", "SOH"] },
+    "TWL": {
+        "stations": [
+            "CEN",
+            "ADM",
+            "TST",
+            "JOR",
+            "YMT",
+            "MOK",
+            "PRE",
+            "SSP",
+            "CSW",
+            "LCK",
+            "MEF",
+            "LAK",
+            "KWF",
+            "KWH",
+            "TWH",
+            "TSW"
+        ]
+    },
+    "ISL": {
+        "stations": [
+            "KET",
+            "HKU",
+            "SYP",
+            "SHW",
+            "CEN",
+            "ADM",
+            "WAC",
+            "CAB",
+            "TIH",
+            "FOH",
+            "NOP",
+            "QUB",
+            "TAK",
+            "SWH",
+            "SKW",
+            "HFC",
+            "CHW"
+        ]
+    },
+    "KTL": {
+        "stations": [
+            "WHA",
+            "HOM",
+            "YMT",
+            "MOK",
+            "PRE",
+            "SKM",
+            "KOT",
+            "LOF",
+            "WTS",
+            "DIH",
+            "CHH",
+            "KOB",
+            "NTK",
+            "KWT",
+            "LAT",
+            "YAT",
+            "TIK"
+        ]
+    },
+    "DRL": { "stations": ["DIS", "SUN"] }
 }

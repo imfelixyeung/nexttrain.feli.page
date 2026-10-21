@@ -5,8 +5,7 @@ import type { Direction } from "@/api/interfaces";
 import { createURL, normaliseJson } from "@/api/nexttrain";
 import NextTrainTile from "@/components/NextTrainTile";
 import ToTerminal from "@/components/ToTerminal";
-import type { Line } from "@/data/lines";
-import lines from "@/data/lines.json";
+import { lines, type Line } from "@/data/lines";
 
 const LineStationDirection = ({
     line,

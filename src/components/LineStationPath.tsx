@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { FC } from "react";
-import type { Line } from "@/data/lines";
-import lines from "@/data/lines.json";
+import { type Line, lines } from "@/data/lines";
 import { getDictionary } from "@/i18n/dictionary";
 import { createRealtimeLink } from "@/utils/createRealtimeLink";
 

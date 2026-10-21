@@ -91,3 +91,18 @@
     --warning: oklch(82.03% 0.1388 45.88);
     --warning-foreground: oklch(21.03% 0.0059 45.88);
 }
+
+:root {
+    /* Line colours taken from https://www.mtr.com.hk/ */
+    --mtr-line-ael: #0d8a8d;
+    --mtr-line-drl: #fb71b5;
+    --mtr-line-eal: #55c3ec;
+    --mtr-line-isl: #0082ca;
+    --mtr-line-ktl: #1ab04d;
+    --mtr-line-lrl: #e0a828;
+    --mtr-line-sil: #c6cd3c;
+    --mtr-line-tcl: #ff913f;
+    --mtr-line-tkl: #6a43a3;
+    --mtr-line-tml: #9a2d11;
+    --mtr-line-twl: #ff2e17;
+}

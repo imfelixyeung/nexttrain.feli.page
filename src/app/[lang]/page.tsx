@@ -1,8 +1,7 @@
 import { Surface, Tabs } from "@heroui/react";
 import Link from "next/link";
 import { lang } from "next/root-params";
-import { type Line, lineIds } from "@/data/lines";
-import lines from "@/data/lines.json";
+import { type Line, lineIds, lines } from "@/data/lines";
 import { getDictionary } from "@/i18n/dictionary";
 
 const IndexPage = async () => {

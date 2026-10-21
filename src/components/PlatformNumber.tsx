@@ -1,6 +1,5 @@
 import type { FC } from "react";
-import type { Line } from "@/data/lines";
-import lines from "@/data/lines.json";
+import { lines, type Line } from "@/data/lines";
 
 interface Props {
     line: Line;
