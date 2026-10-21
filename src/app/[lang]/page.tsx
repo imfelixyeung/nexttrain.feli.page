@@ -3,6 +3,7 @@ import Link from "next/link";
 import { lang } from "next/root-params";
 import { type Line, lineIds, lines } from "@/data/lines";
 import { getDictionary } from "@/i18n/dictionary";
+import { createRealtimeLink } from "@/utils/createRealtimeLink";
 
 const IndexPage = async () => {
     const t = await getDictionary();
@@ -36,7 +37,11 @@ const IndexPage = async () => {
                                 {lines[line].stations.map((station: string) => (
                                     <li key={`${line}-${station}`}>
                                         <Link
-                                            href={`/${locale}/realtime/${line}/${station}`}
+                                            href={createRealtimeLink(
+                                                line,
+                                                station,
+                                                locale,
+                                            )}
                                             className="block w-full px-4 py-2 hover:underline hover:font-semibold"
                                         >
                                             {t(`mtr.stations.${station}`)}

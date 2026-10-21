@@ -4,4 +4,4 @@ export const createRealtimeLink = (
     line: string,
     station: string,
     locale = defaultLocale,
-) => `/${locale}/realtime/${line}/${station}`;
+) => `/${locale}/line/${line}/station/${station}/realtime`;

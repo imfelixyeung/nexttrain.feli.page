@@ -7,7 +7,7 @@ import { availableLocales } from "@/locales";
 import { LineStationData } from "./page.client";
 
 export const generateMetadata = async (
-    props: PageProps<"/[lang]/realtime/[line]/[station]">,
+    props: PageProps<"/[lang]/line/[line]/station/[station]/realtime">,
 ) => {
     const { line, station } = await props.params;
     const t = await getDictionary();
@@ -22,7 +22,7 @@ export const generateMetadata = async (
 
 const LineStationPage = async ({
     params,
-}: PageProps<"/[lang]/realtime/[line]/[station]">) => {
+}: PageProps<"/[lang]/line/[line]/station/[station]/realtime">) => {
     const { line, station } = await params;
     assertValidLine(line);
 
