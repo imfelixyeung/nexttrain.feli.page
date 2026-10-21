@@ -1,8 +1,9 @@
+import type { Line } from "@/data/lines";
 import lines from "@/data/lines.json";
 import { getDictionary } from "@/i18n/dictionary";
 
 interface Props {
-    line: string;
+    line: Line;
 }
 
 const LineBadge = async ({ line }: Props) => {

@@ -1,9 +1,9 @@
-import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+import { Surface, Tabs } from "@heroui/react";
 import Link from "next/link";
 import { lang } from "next/root-params";
+import { type Line, lineIds } from "@/data/lines";
 import lines from "@/data/lines.json";
 import { getDictionary } from "@/i18n/dictionary";
-import { jc } from "@/utils/joinClasses";
 
 const IndexPage = async () => {
     const t = await getDictionary();
@@ -11,28 +11,28 @@ const IndexPage = async () => {
 
     return (
         <div className="mx-2 mt-6 space-y-6">
-            <TabGroup>
-                <div className="flex justify-center">
-                    <TabList className="justify-center gap-1 tabs tabs-boxed">
-                        {Object.keys(lines).map((line) => (
-                            <Tab key={line}>
-                                <div
-                                    className={jc([
-                                        "tab rounded-md data-selected:opacity-10 data-selected:text-base-100",
-                                    ])}
+            <Tabs>
+                <Tabs.ListContainer>
+                    <Tabs.List>
+                        {lineIds.map((line: Line) => (
+                            <Tabs.Tab key={line} id={line}>
+                                <Tabs.Indicator
                                     style={{
-                                        backgroundColor: lines[line].colour,
+                                        borderColor: lines[line].colour,
                                     }}
-                                >
-                                    {t(`mtr.lines.${line}`)}
-                                </div>
-                            </Tab>
+                                />
+                                {t(`mtr.lines.${line}`)}
+                            </Tabs.Tab>
                         ))}
-                    </TabList>
-                </div>
-                <TabPanels>
-                    {Object.keys(lines).map((line) => (
-                        <TabPanel key={line} className="flex justify-center">
+                    </Tabs.List>
+                </Tabs.ListContainer>
+                {lineIds.map((line) => (
+                    <Tabs.Panel
+                        id={line}
+                        key={line}
+                        className="mx-auto max-w-xl"
+                    >
+                        <Surface variant="secondary">
                             <ul className="w-full max-w-xl p-2 text-center bg-base-200 menu rounded-box">
                                 {lines[line].stations.map((station: string) => (
                                     <li key={`${line}-${station}`}>
@@ -45,10 +45,10 @@ const IndexPage = async () => {
                                     </li>
                                 ))}
                             </ul>
-                        </TabPanel>
-                    ))}
-                </TabPanels>
-            </TabGroup>
+                        </Surface>
+                    </Tabs.Panel>
+                ))}
+            </Tabs>
         </div>
     );
 };

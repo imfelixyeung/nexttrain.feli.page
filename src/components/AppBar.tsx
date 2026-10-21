@@ -1,43 +1,32 @@
 "use client";
 
+import { buttonVariants, Surface } from "@heroui/react";
+import { ArrowLeftIcon, TrainIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HiArrowLeft } from "react-icons/hi";
-import { MdOutlineTrain } from "react-icons/md";
 import LocaleChangerMenu from "./LocaleChangerMenu";
 
 const AppBar = () => {
     const pathname = usePathname();
     const atHome = pathname.lastIndexOf("/") === 0;
+    const Icon = atHome ? TrainIcon : ArrowLeftIcon;
 
     return (
-        <div className="sticky inset-y-0 top-0 z-50 navbar bg-primary text-primary-content">
+        <Surface className="sticky inset-y-0 top-0 z-50 flex items-center border-b py-2 px-2">
             <div className="flex-none">
-                {atHome ? (
-                    <span className="block p-3 text-2xl rounded-full">
-                        <MdOutlineTrain />
-                    </span>
-                ) : (
-                    <Link
-                        href="/"
-                        className="text-2xl btn btn-square btn-ghost"
-                    >
-                        <HiArrowLeft />
-                    </Link>
-                )}
+                <Link href="/" className={buttonVariants({ isIconOnly: true })}>
+                    <Icon size={16} className="size-5" />
+                </Link>
             </div>
-            <div className="flex-1">
-                <Link
-                    href="/"
-                    className="text-xl font-bold normal-case btn btn-ghost"
-                >
+            <div className="flex-1 pl-2">
+                <Link href="/" className="text-lg font-bold">
                     Next Train
                 </Link>
             </div>
             <div className="flex-none">
                 <LocaleChangerMenu />
             </div>
-        </div>
+        </Surface>
     );
 };
 

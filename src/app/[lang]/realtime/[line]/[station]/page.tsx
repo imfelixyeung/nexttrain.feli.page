@@ -1,6 +1,7 @@
 import type { GetStaticPaths, Metadata } from "next";
 import LineBadge from "@/components/LineBadge";
 import LineStationPath from "@/components/LineStationPath";
+import { assertValidLine, lineIds } from "@/data/lines";
 import lines from "@/data/lines.json";
 import { getDictionary } from "@/i18n/dictionary";
 import { availableLocales } from "@/locales";
@@ -24,6 +25,7 @@ const LineStationPage = async ({
     params,
 }: PageProps<"/[lang]/realtime/[line]/[station]">) => {
     const { line, station } = await params;
+    assertValidLine(line);
 
     return (
         <div>
@@ -47,7 +49,7 @@ const LineStationPage = async ({
 export default LineStationPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = Object.keys(lines)
+    const paths = lineIds
         .flatMap((line) =>
             lines[line].stations.map((station: string) =>
                 availableLocales.map((locale) => ({

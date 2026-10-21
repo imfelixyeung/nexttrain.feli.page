@@ -1,11 +1,12 @@
 import Link from "next/link";
 import type { FC } from "react";
+import type { Line } from "@/data/lines";
 import lines from "@/data/lines.json";
 import { getDictionary } from "@/i18n/dictionary";
 import { createRealtimeLink } from "@/utils/createRealtimeLink";
 
 interface Props {
-    line: string;
+    line: Line;
     station: string;
 }
 
@@ -30,8 +31,8 @@ const LineStationPath: FC<Props> = ({ line, station }) => {
 };
 
 interface LineStationPathPinProps {
-    line: string;
-    station: string;
+    line: Line;
+    station: string | null;
     bold?: boolean;
 }
 
@@ -61,7 +62,9 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
             <div className="flex items-center w-full">
                 <div
                     className="flex-grow h-2"
-                    style={{ backgroundColor: isFirstStation ? null : colour }}
+                    style={{
+                        backgroundColor: isFirstStation ? undefined : colour,
+                    }}
                 ></div>
                 <div
                     className="relative grid w-4 h-4 rounded-full place-items-center"
@@ -77,7 +80,9 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
                 </div>
                 <div
                     className="flex-grow h-2"
-                    style={{ backgroundColor: isLastStation ? null : colour }}
+                    style={{
+                        backgroundColor: isLastStation ? undefined : colour,
+                    }}
                 ></div>
             </div>
         </div>

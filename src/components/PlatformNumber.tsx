@@ -1,8 +1,9 @@
 import type { FC } from "react";
+import type { Line } from "@/data/lines";
 import lines from "@/data/lines.json";
 
 interface Props {
-    line: string;
+    line: Line;
     platform: string;
     variant?: "default" | "small";
 }

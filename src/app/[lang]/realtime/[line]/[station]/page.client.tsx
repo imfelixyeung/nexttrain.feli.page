@@ -5,6 +5,7 @@ import type { Direction } from "@/api/interfaces";
 import { createURL, normaliseJson } from "@/api/nexttrain";
 import NextTrainTile from "@/components/NextTrainTile";
 import ToTerminal from "@/components/ToTerminal";
+import type { Line } from "@/data/lines";
 import lines from "@/data/lines.json";
 
 const LineStationDirection = ({
@@ -12,7 +13,7 @@ const LineStationDirection = ({
     destination,
     data,
 }: {
-    line: string;
+    line: Line;
     destination: string;
     data: Direction[];
 }) => {
@@ -36,7 +37,7 @@ export const LineStationData = ({
     line,
     station,
 }: {
-    line: string;
+    line: Line;
     station: string;
 }) => {
     const { isLoading, error, data, status } = useQuery(
