@@ -1,16 +1,16 @@
 import type { GetStaticPaths, Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import LineBadge from "@/components/LineBadge";
 import LineStationPath from "@/components/LineStationPath";
 import { assertValidLine, lineIds, lines } from "@/data/lines";
-import { getDictionary } from "@/i18n/dictionary";
-import { availableLocales } from "@/locales";
+import { routing } from "@/i18n/routing";
 import { LineStationData } from "./page.client";
 
 export const generateMetadata = async (
     props: PageProps<"/[lang]/mtr/line/[line]/station/[station]/realtime">,
 ) => {
     const { line, station } = await props.params;
-    const t = await getDictionary();
+    const t = await getTranslations();
 
     const stationStr = t(`mtr.stations.${station}`);
     const lineStr = t(`mtr.lines.${line}`);
@@ -51,7 +51,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const paths = lineIds
         .flatMap((line) =>
             lines[line].stations.map((station: string) =>
-                availableLocales.map((locale) => ({
+                routing.locales.map((locale) => ({
                     params: { line, station },
                     locale,
                 })),

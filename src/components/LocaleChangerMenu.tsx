@@ -1,15 +1,19 @@
+"use client";
+
 import { Button, Dropdown } from "@heroui/react";
 import { LanguagesIcon } from "lucide-react";
-import { useParams, useRouter } from "next/navigation";
-import { availableLocales, defaultLocale } from "@/locales";
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 
 const LocaleChangerMenu = () => {
+    const pathname = usePathname();
     const router = useRouter();
-    let { lang } = useParams();
-    lang = lang?.toString();
+    const locale = useLocale();
+    const availableLocales = routing.locales;
 
     const handleLocaleChange = async (locale: string) => {
-        router.push(`/${locale}`);
+        router.push(pathname, { locale });
     };
 
     return (
@@ -20,7 +24,7 @@ const LocaleChangerMenu = () => {
                 </Button>
                 <Dropdown.Popover>
                     <Dropdown.Menu
-                        selectedKeys={[lang ?? defaultLocale]}
+                        selectedKeys={[locale]}
                         onAction={(locale) =>
                             void handleLocaleChange(locale.toString())
                         }

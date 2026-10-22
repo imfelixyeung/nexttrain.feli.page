@@ -1,12 +1,12 @@
+import { getTranslations } from "next-intl/server";
 import { type Line, lines } from "@/data/lines";
-import { getDictionary } from "@/i18n/dictionary";
 
 interface Props {
     line: Line;
 }
 
 const LineBadge = async ({ line }: Props) => {
-    const t = await getDictionary();
+    const t = await getTranslations();
     const colour = lines[line].colour;
     return (
         <div

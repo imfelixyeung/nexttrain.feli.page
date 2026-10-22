@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { availableLocales } from "@/locales";
 import "@/styles/globals.css";
+import { NextIntlClientProvider } from "next-intl";
 import AppBar from "@/components/AppBar";
+import { routing } from "@/i18n/routing";
 import { Providers } from "./providers";
 
 export const instant = false;
 
-export async function generateStaticParams() {
-    return availableLocales.map((lang) => ({ lang }));
+export function generateStaticParams() {
+    return routing.locales.map((locale) => ({ lang: locale }));
 }
 
 const appInfo = {
@@ -33,10 +34,14 @@ const Layout = async ({ children, params }: LayoutProps<"/[lang]">) => {
     return (
         <html lang={lang}>
             <body className="font-inter">
-                <AppBar />
-                <Providers>
-                    <div className="mb-16 text-base-content">{children}</div>
-                </Providers>
+                <NextIntlClientProvider>
+                    <AppBar />
+                    <Providers>
+                        <div className="mb-16 text-base-content">
+                            {children}
+                        </div>
+                    </Providers>
+                </NextIntlClientProvider>
             </body>
         </html>
     );

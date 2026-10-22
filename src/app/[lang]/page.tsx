@@ -1,19 +1,17 @@
 import { Surface, Typography } from "@heroui/react";
 import Link from "next/link";
 import { lang } from "next/root-params";
+import { getTranslations } from "next-intl/server";
 import { stations } from "@/data/light-rail";
 import { lineIds, lines } from "@/data/lines";
-import { getDictionary } from "@/i18n/dictionary";
-import { assertValidLocale } from "@/locales";
 import {
     createLightRailLink,
     createLineLink,
 } from "@/utils/createRealtimeLink";
 
 const IndexPage = async () => {
-    const t = await getDictionary();
+    const t = await getTranslations();
     const locale = await lang();
-    assertValidLocale(locale);
 
     return (
         <div className="mx-2 mt-6 space-y-6">
@@ -59,7 +57,7 @@ const IndexPage = async () => {
                                     )}
                                     className="block w-full px-4 py-2 hover:underline hover:font-semibold mr-6"
                                 >
-                                    {station[`name.${locale}`]}
+                                    {t(`light-rail.stations.${station.id}`)}
                                 </Link>
                             </li>
                         ))}

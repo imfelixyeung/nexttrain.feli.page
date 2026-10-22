@@ -1,32 +1,8 @@
-import { match } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
-import { type NextRequest, NextResponse } from "next/server";
-import { availableLocales, defaultLocale } from "./locales";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "./i18n/routing";
 
-function getLocale(request: NextRequest) {
-    const headers = {
-        "accept-language": request.headers.get("accept-language") ?? "",
-    };
-    const languages = new Negotiator({ headers }).languages();
-    return match(languages, availableLocales, defaultLocale);
-}
-
-export function proxy(request: NextRequest) {
-    // Check if there is any supported locale in the pathname
-    const { pathname } = request.nextUrl;
-    const pathnameHasLocale = availableLocales.some(
-        (locale) =>
-            pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-    );
-
-    if (pathnameHasLocale) return;
-
-    // Redirect if there is no locale
-    const locale = getLocale(request);
-    request.nextUrl.pathname = `/${locale}${pathname}`;
-    return NextResponse.redirect(request.nextUrl);
-}
+export default createMiddleware(routing);
 
 export const config = {
-    matcher: ["/"],
+    matcher: "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
 };

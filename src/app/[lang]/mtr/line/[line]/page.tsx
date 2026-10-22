@@ -1,15 +1,15 @@
 import { Surface } from "@heroui/react";
 import Link from "next/link";
 import { lang } from "next/root-params";
+import { getTranslations } from "next-intl/server";
 import LineBadge from "@/components/LineBadge";
 import { assertValidLine, lines } from "@/data/lines";
-import { getDictionary } from "@/i18n/dictionary";
 import { createRealtimeLink } from "@/utils/createRealtimeLink";
 
 const IndexPage = async ({ params }: PageProps<"/[lang]/mtr/line/[line]">) => {
     const { line } = await params;
     assertValidLine(line);
-    const t = await getDictionary();
+    const t = await getTranslations();
     const locale = await lang();
 
     return (

@@ -10,15 +10,14 @@
         "ci": "bun check && bun run lint && biome check && bun run build"
     },
     "dependencies": {
-        "@formatjs/intl-localematcher": "^0.9.0",
         "@heroui/react": "^3.2.6",
         "@heroui/styles": "^3.2.6",
         "@tanstack/react-query": "^5.104.5",
         "csv-parse": "^7.0.3",
         "lucide-react": "^1.61.0",
         "moment": "^2.31.0",
-        "negotiator": "^1.1.0",
         "next": "16.4.2",
+        "next-intl": "^4.14.9",
         "react": "19.3.0",
         "react-dom": "19.3.0",
         "zod": "^4.6.7"

@@ -1,12 +1,12 @@
+import { useTranslations } from "next-intl";
 import type { FC } from "react";
-import { translate } from "@/locales";
 
 interface Props {
     ttnt: string;
 }
 
 const TTNTMessage: FC<Props> = ({ ttnt }) => {
-    const t = translate;
+    const t = useTranslations();
 
     return ttnt === "0" ? (
         <div>

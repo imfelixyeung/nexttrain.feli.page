@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import type { FC } from "react";
 import { type Line, lines } from "@/data/lines";
-import { getDictionary } from "@/i18n/dictionary";
 import { createRealtimeLink } from "@/utils/createRealtimeLink";
 
 interface Props {
@@ -39,7 +39,7 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
     station,
     bold = false,
 }) => {
-    const t = await getDictionary();
+    const t = await getTranslations();
 
     if (!station) {
         return <div></div>;

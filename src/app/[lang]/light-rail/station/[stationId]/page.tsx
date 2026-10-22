@@ -1,14 +1,14 @@
 import { Typography } from "@heroui/react";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { stations } from "@/data/light-rail";
-import { assertValidLocale } from "@/locales";
 import { Schedules } from "./page.client";
 
 const Page = async ({
     params,
 }: PageProps<"/[lang]/light-rail/station/[stationId]">) => {
-    const { lang, stationId: id } = await params;
-    assertValidLocale(lang);
+    const { stationId: id } = await params;
+    const t = await getTranslations();
 
     const stationId = Number(id);
     const station = stations.find((s) => s.id === stationId);
@@ -17,7 +17,7 @@ const Page = async ({
     return (
         <div className="container mx-auto max-w-lg my-6 p-3">
             <Typography.Heading level={1}>
-                {station["name.en-HK"]}
+                {t(`light-rail.stations.${id}`)}
             </Typography.Heading>
 
             <Schedules station={station} />
