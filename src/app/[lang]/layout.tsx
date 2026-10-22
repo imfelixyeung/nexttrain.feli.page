@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 const Layout = async ({ children, params }: LayoutProps<"/[lang]">) => {
     const { lang } = await params;
     return (
-        <html lang={lang}>
+        <html lang={lang} suppressHydrationWarning>
             <body className="font-inter">
                 <NextIntlClientProvider>
                     <AppBar />
