@@ -1,0 +1,342 @@
+[
+    {
+        "id": 1,
+        "name.en-HK": "Tuen Mun Ferry Pier",
+        "name.zh-HK": "屯門碼頭"
+    },
+    {
+        "id": 10,
+        "name.en-HK": "Melody Garden",
+        "name.zh-HK": "美樂"
+    },
+    {
+        "id": 15,
+        "name.en-HK": "Butterfly",
+        "name.zh-HK": "蝴蝶"
+    },
+    {
+        "id": 20,
+        "name.en-HK": "Light Rail Depot",
+        "name.zh-HK": "輕鐵車廠"
+    },
+    {
+        "id": 30,
+        "name.en-HK": "Lung Mun",
+        "name.zh-HK": "龍門"
+    },
+    {
+        "id": 40,
+        "name.en-HK": "Tsing Shan Tsuen",
+        "name.zh-HK": "青山村"
+    },
+    {
+        "id": 50,
+        "name.en-HK": "Tsing Wun",
+        "name.zh-HK": "青雲"
+    },
+    {
+        "id": 60,
+        "name.en-HK": "Kin On",
+        "name.zh-HK": "建安"
+    },
+    {
+        "id": 70,
+        "name.en-HK": "Ho Tin",
+        "name.zh-HK": "河田"
+    },
+    {
+        "id": 75,
+        "name.en-HK": "Choy Yee Bridge",
+        "name.zh-HK": "蔡意橋"
+    },
+    {
+        "id": 80,
+        "name.en-HK": "Affluence",
+        "name.zh-HK": "澤豐"
+    },
+    {
+        "id": 90,
+        "name.en-HK": "Tuen Mun Hospital",
+        "name.zh-HK": "屯門醫院"
+    },
+    {
+        "id": 100,
+        "name.en-HK": "Siu Hong",
+        "name.zh-HK": "兆康"
+    },
+    {
+        "id": 110,
+        "name.en-HK": "Kei Lun",
+        "name.zh-HK": "麒麟"
+    },
+    {
+        "id": 120,
+        "name.en-HK": "Ching Chung",
+        "name.zh-HK": "青松"
+    },
+    {
+        "id": 130,
+        "name.en-HK": "Kin Sang",
+        "name.zh-HK": "建生"
+    },
+    {
+        "id": 140,
+        "name.en-HK": "Tin King",
+        "name.zh-HK": "田景"
+    },
+    {
+        "id": 150,
+        "name.en-HK": "Leung King",
+        "name.zh-HK": "良景"
+    },
+    {
+        "id": 160,
+        "name.en-HK": "San Wai",
+        "name.zh-HK": "新圍"
+    },
+    {
+        "id": 170,
+        "name.en-HK": "Shek Pai",
+        "name.zh-HK": "石排"
+    },
+    {
+        "id": 180,
+        "name.en-HK": "Shan King (North)",
+        "name.zh-HK": "山景 (北)"
+    },
+    {
+        "id": 190,
+        "name.en-HK": "Shan King (South)",
+        "name.zh-HK": "山景 (南)"
+    },
+    {
+        "id": 200,
+        "name.en-HK": "Ming Kum",
+        "name.zh-HK": "鳴琴"
+    },
+    {
+        "id": 212,
+        "name.en-HK": "Tai Hing (North)",
+        "name.zh-HK": "大興 (北)"
+    },
+    {
+        "id": 220,
+        "name.en-HK": "Tai Hing (South)",
+        "name.zh-HK": "大興 (南)"
+    },
+    {
+        "id": 230,
+        "name.en-HK": "Ngan Wai",
+        "name.zh-HK": "銀圍"
+    },
+    {
+        "id": 240,
+        "name.en-HK": "Siu Hei",
+        "name.zh-HK": "兆禧"
+    },
+    {
+        "id": 250,
+        "name.en-HK": "Hoi Wong Road",
+        "name.zh-HK": "海皇路"
+    },
+    {
+        "id": 260,
+        "name.en-HK": "Goodview Garden",
+        "name.zh-HK": "豐景園"
+    },
+    {
+        "id": 265,
+        "name.en-HK": "Siu Lun",
+        "name.zh-HK": "兆麟"
+    },
+    {
+        "id": 270,
+        "name.en-HK": "On Ting",
+        "name.zh-HK": "安定"
+    },
+    {
+        "id": 275,
+        "name.en-HK": "Yau Oi",
+        "name.zh-HK": "友愛"
+    },
+    {
+        "id": 280,
+        "name.en-HK": "Town Centre",
+        "name.zh-HK": "市中心"
+    },
+    {
+        "id": 295,
+        "name.en-HK": "Tuen Mun",
+        "name.zh-HK": "屯門"
+    },
+    {
+        "id": 300,
+        "name.en-HK": "Pui To",
+        "name.zh-HK": "杯渡"
+    },
+    {
+        "id": 310,
+        "name.en-HK": "Hoh Fuk Tong",
+        "name.zh-HK": "何福堂"
+    },
+    {
+        "id": 320,
+        "name.en-HK": "San Hui",
+        "name.zh-HK": "新墟"
+    },
+    {
+        "id": 330,
+        "name.en-HK": "Prime View",
+        "name.zh-HK": "景峰"
+    },
+    {
+        "id": 340,
+        "name.en-HK": "Fung Tei",
+        "name.zh-HK": "鳳地"
+    },
+    {
+        "id": 350,
+        "name.en-HK": "Lam Tei",
+        "name.zh-HK": "藍地"
+    },
+    {
+        "id": 360,
+        "name.en-HK": "Nai Wai",
+        "name.zh-HK": "泥圍"
+    },
+    {
+        "id": 370,
+        "name.en-HK": "Chung Uk Tsuen",
+        "name.zh-HK": "鍾屋村"
+    },
+    {
+        "id": 380,
+        "name.en-HK": "Hung Shui Kiu",
+        "name.zh-HK": "洪水橋"
+    },
+    {
+        "id": 390,
+        "name.en-HK": "Tong Fong Tsuen",
+        "name.zh-HK": "塘坊村"
+    },
+    {
+        "id": 400,
+        "name.en-HK": "Ping Shan",
+        "name.zh-HK": "屏山"
+    },
+    {
+        "id": 425,
+        "name.en-HK": "Hang Mei Tsuen",
+        "name.zh-HK": "坑尾村"
+    },
+    {
+        "id": 430,
+        "name.en-HK": "Tin Shui Wai",
+        "name.zh-HK": "天水圍"
+    },
+    {
+        "id": 435,
+        "name.en-HK": "Tin Tsz",
+        "name.zh-HK": "天慈"
+    },
+    {
+        "id": 445,
+        "name.en-HK": "Tin Yiu",
+        "name.zh-HK": "天耀"
+    },
+    {
+        "id": 448,
+        "name.en-HK": "Locwood",
+        "name.zh-HK": "樂湖"
+    },
+    {
+        "id": 450,
+        "name.en-HK": "Tin Wu",
+        "name.zh-HK": "天湖"
+    },
+    {
+        "id": 455,
+        "name.en-HK": "Ginza",
+        "name.zh-HK": "銀座"
+    },
+    {
+        "id": 460,
+        "name.en-HK": "Tin Shui",
+        "name.zh-HK": "天瑞"
+    },
+    {
+        "id": 468,
+        "name.en-HK": "Chung Fu",
+        "name.zh-HK": "頌富"
+    },
+    {
+        "id": 480,
+        "name.en-HK": "Tin Fu",
+        "name.zh-HK": "天富"
+    },
+    {
+        "id": 490,
+        "name.en-HK": "Chestwood",
+        "name.zh-HK": "翠湖"
+    },
+    {
+        "id": 500,
+        "name.en-HK": "Tin Wing",
+        "name.zh-HK": "天榮"
+    },
+    {
+        "id": 510,
+        "name.en-HK": "Tin Yuet",
+        "name.zh-HK": "天悅"
+    },
+    {
+        "id": 520,
+        "name.en-HK": "Tin Sau",
+        "name.zh-HK": "天秀"
+    },
+    {
+        "id": 530,
+        "name.en-HK": "Wetland Park",
+        "name.zh-HK": "濕地公園"
+    },
+    {
+        "id": 540,
+        "name.en-HK": "Tin Heng",
+        "name.zh-HK": "天恒"
+    },
+    {
+        "id": 550,
+        "name.en-HK": "Tin Yat",
+        "name.zh-HK": "天逸"
+    },
+    {
+        "id": 560,
+        "name.en-HK": "Shui Pin Wai",
+        "name.zh-HK": "水邊圍"
+    },
+    {
+        "id": 570,
+        "name.en-HK": "Fung Nin Road",
+        "name.zh-HK": "豐年路"
+    },
+    {
+        "id": 580,
+        "name.en-HK": "Hong Lok Road",
+        "name.zh-HK": "康樂路"
+    },
+    {
+        "id": 590,
+        "name.en-HK": "Tai Tong Road",
+        "name.zh-HK": "大棠路"
+    },
+    {
+        "id": 600,
+        "name.en-HK": "Yuen Long",
+        "name.zh-HK": "元朗"
+    },
+    {
+        "id": 920,
+        "name.en-HK": "Sam Shing",
+        "name.zh-HK": "三聖"
+    }
+]

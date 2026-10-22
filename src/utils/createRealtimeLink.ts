@@ -8,3 +8,8 @@ export const createRealtimeLink = (
 
 export const createLineLink = (line: string, locale = defaultLocale) =>
     `/${locale}/mtr/line/${line}`;
+
+export const createLightRailLink = (
+    stationId: number,
+    locale = defaultLocale,
+) => `/${locale}/light-rail/station/${stationId}`;

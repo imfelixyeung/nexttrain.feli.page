@@ -6,7 +6,7 @@ import { assertValidLine, lines } from "@/data/lines";
 import { getDictionary } from "@/i18n/dictionary";
 import { createRealtimeLink } from "@/utils/createRealtimeLink";
 
-const IndexPage = async ({ params }: PageProps<"/[lang]/line/[line]">) => {
+const IndexPage = async ({ params }: PageProps<"/[lang]/mtr/line/[line]">) => {
     const { line } = await params;
     assertValidLine(line);
     const t = await getDictionary();
