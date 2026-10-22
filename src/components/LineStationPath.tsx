@@ -10,13 +10,12 @@ interface Props {
 }
 
 const LineStationPath: FC<Props> = ({ line, station }) => {
-    const colour = lines[line].colour;
     const indexOfStation = lines[line].stations.indexOf(station);
 
     const previousStation =
-        indexOfStation != 0 ? lines[line].stations[indexOfStation - 1] : null;
+        indexOfStation !== 0 ? lines[line].stations[indexOfStation - 1] : null;
     const nextStation =
-        indexOfStation != lines[line].stations.length - 1
+        indexOfStation !== lines[line].stations.length - 1
             ? lines[line].stations[indexOfStation + 1]
             : null;
 

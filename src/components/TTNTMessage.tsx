@@ -8,11 +8,11 @@ interface Props {
 const TTNTMessage: FC<Props> = ({ ttnt }) => {
     const t = translate;
 
-    return ttnt == "0" ? (
+    return ttnt === "0" ? (
         <div>
             <span className="text-xl font-bold">Departing</span>
         </div>
-    ) : ttnt == "1" ? (
+    ) : ttnt === "1" ? (
         <div>
             <span className="text-xl font-bold">Arriving</span>
         </div>

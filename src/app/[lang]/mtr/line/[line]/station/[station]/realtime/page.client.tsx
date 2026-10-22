@@ -18,7 +18,7 @@ const LineStationDirection = ({
 }) => {
     return (
         <div className="grow space-y-4">
-            <ToTerminal line={line} station={destination} />
+            <ToTerminal station={destination} />
             <div className="space-y-3">
                 {data.map((data) => {
                     return (
@@ -39,7 +39,7 @@ export const LineStationData = ({
     line: Line;
     station: string;
 }) => {
-    const { isLoading, error, data, status } = useQuery({
+    const { isLoading, data } = useQuery({
         queryKey: ["realtime", line, station],
         queryFn: () =>
             fetch(createURL({ line, station }))
@@ -50,8 +50,8 @@ export const LineStationData = ({
         refetchOnWindowFocus: false,
     });
 
-    const hasDownData = data && data.data.DOWN && data.data.DOWN.length !== 0;
-    const hasUpData = data && data.data.UP && data.data.UP.length !== 0;
+    const hasDownData = data?.data.DOWN && data.data.DOWN.length !== 0;
+    const hasUpData = data?.data.UP && data.data.UP.length !== 0;
 
     return (
         <>

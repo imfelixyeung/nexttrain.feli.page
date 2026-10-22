@@ -1,4 +1,4 @@
-import { lines, type Line } from "@/data/lines";
+import { type Line, lines } from "@/data/lines";
 import { getDictionary } from "@/i18n/dictionary";
 
 interface Props {

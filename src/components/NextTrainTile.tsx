@@ -14,7 +14,7 @@ interface Props {
 }
 
 const NextTrainTile: FC<Props> = ({ data, line }) => {
-    const { seq, dest, plat, time, ttnt, valid, source } = data;
+    const { dest, plat, time, ttnt } = data;
 
     const t = translate;
     const momentTime = moment(time);
@@ -38,11 +38,11 @@ const NextTrainTile: FC<Props> = ({ data, line }) => {
                     </div>
                 </div>
                 <div className="text-sm text-base-content">
-                    {ttnt == "0" ? (
+                    {ttnt === "0" ? (
                         <div>Departing at {formattedDepartureTime}</div>
                     ) : (
                         <div>
-                            {ttnt == "1" ? "Arriving" : "Arrivies"} at{" "}
+                            {ttnt === "1" ? "Arriving" : "Arrivies"} at{" "}
                             {formattedArrivalTime}
                         </div>
                     )}

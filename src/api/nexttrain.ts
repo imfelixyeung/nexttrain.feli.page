@@ -5,7 +5,7 @@ const endpoint = "https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php";
 export const createURL = ({ line, station }: CreateURLOptions) =>
     `${endpoint}?line=${line}&sta=${station}`;
 
-export const normaliseJson = (json: any) => {
+export const normaliseJson = (json: unknown) => {
     const { sys_time, curr_time, data, status, message, isdelay } =
         json as ResponseJson;
     const key = Object.keys(data)[0];

@@ -1,12 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const getDottedKeyFromObject = (
     object: {
-        [key: string]: any;
+        [key: string]: unknown;
     },
     key: string,
 ): string => {
     const keyChunks = key.split(".");
-    var data: any = object;
-    for (var chunk of keyChunks) {
+    // biome-ignore lint/suspicious/noExplicitAny: FIXME
+    let data: any = object;
+    for (const chunk of keyChunks) {
         if (data === undefined || data === null) break;
         data = data[chunk] ?? null;
     }
@@ -14,7 +16,7 @@ const getDottedKeyFromObject = (
 };
 
 export interface LocaleLookup {
-    [key: string]: { [key: string]: any };
+    [key: string]: { [key: string]: unknown };
 }
 
 export interface CreateTranslateOptions {

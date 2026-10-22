@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint"
+        "lint": "eslint",
+        "ci": "bun check && bun run lint && biome check && bun run build"
     },
     "dependencies": {
         "@formatjs/intl-localematcher": "^0.9.0",
