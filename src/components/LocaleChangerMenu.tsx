@@ -2,7 +2,7 @@
 
 import { Button, Dropdown } from "@heroui/react";
 import { LanguagesIcon } from "lucide-react";
-import { useLocale } from "next-intl";
+import { type Locale, useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
@@ -12,7 +12,7 @@ const LocaleChangerMenu = () => {
     const locale = useLocale();
     const availableLocales = routing.locales;
 
-    const handleLocaleChange = async (locale: string) => {
+    const handleLocaleChange = async (locale: Locale) => {
         router.push(pathname, { locale });
     };
 
@@ -26,7 +26,7 @@ const LocaleChangerMenu = () => {
                     <Dropdown.Menu
                         selectedKeys={[locale]}
                         onAction={(locale) =>
-                            void handleLocaleChange(locale.toString())
+                            void handleLocaleChange(locale as Locale)
                         }
                     >
                         {availableLocales.map((locale) => (

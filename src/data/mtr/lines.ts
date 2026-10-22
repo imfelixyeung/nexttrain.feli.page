@@ -1,10 +1,10 @@
-{
-    "AEL": { "stations": ["HOK", "KOW", "TSY", "AIR", "AWE"] },
-    "TCL": {
-        "stations": ["HOK", "KOW", "OLY", "NAC", "LAK", "TSY", "SUN", "TUC"]
+export const lines = {
+    AEL: { stations: ["HOK", "KOW", "TSY", "AIR", "AWE"] },
+    TCL: {
+        stations: ["HOK", "KOW", "OLY", "NAC", "LAK", "TSY", "SUN", "TUC"],
     },
-    "TML": {
-        "stations": [
+    TML: {
+        stations: [
             "WKS",
             "MOS",
             "HEO",
@@ -31,14 +31,14 @@
             "LOP",
             "TIS",
             "SIH",
-            "TUM"
-        ]
+            "TUM",
+        ],
     },
-    "TKL": {
-        "stations": ["NOP", "QUB", "YAT", "TIK", "TKO", "HAH", "POA", "LHP"]
+    TKL: {
+        stations: ["NOP", "QUB", "YAT", "TIK", "TKO", "HAH", "POA", "LHP"],
     },
-    "EAL": {
-        "stations": [
+    EAL: {
+        stations: [
             "ADM",
             "EXC",
             "HUH",
@@ -53,12 +53,12 @@
             "FAN",
             "SHS",
             "LOW",
-            "LMC"
-        ]
+            "LMC",
+        ],
     },
-    "SIL": { "stations": ["ADM", "OCP", "WCH", "LET", "SOH"] },
-    "TWL": {
-        "stations": [
+    SIL: { stations: ["ADM", "OCP", "WCH", "LET", "SOH"] },
+    TWL: {
+        stations: [
             "CEN",
             "ADM",
             "TST",
@@ -74,11 +74,11 @@
             "KWF",
             "KWH",
             "TWH",
-            "TSW"
-        ]
+            "TSW",
+        ],
     },
-    "ISL": {
-        "stations": [
+    ISL: {
+        stations: [
             "KET",
             "HKU",
             "SYP",
@@ -95,11 +95,11 @@
             "SWH",
             "SKW",
             "HFC",
-            "CHW"
-        ]
+            "CHW",
+        ],
     },
-    "KTL": {
-        "stations": [
+    KTL: {
+        stations: [
             "WHA",
             "HOM",
             "YMT",
@@ -116,8 +116,8 @@
             "KWT",
             "LAT",
             "YAT",
-            "TIK"
-        ]
+            "TIK",
+        ],
     },
-    "DRL": { "stations": ["DIS", "SUN"] }
-}
+    DRL: { stations: ["DIS", "SUN"] },
+} as const;

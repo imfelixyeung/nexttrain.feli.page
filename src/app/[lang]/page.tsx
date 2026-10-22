@@ -1,9 +1,8 @@
 import { Surface, Typography } from "@heroui/react";
 import Link from "next/link";
-import { lang } from "next/root-params";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { stations } from "@/data/light-rail";
-import { lineIds, lines } from "@/data/lines";
+import { lineIds, lines } from "@/data/mtr";
 import {
     createLightRailLink,
     createLineLink,
@@ -11,7 +10,7 @@ import {
 
 const IndexPage = async () => {
     const t = await getTranslations();
-    const locale = await lang();
+    const locale = await getLocale();
 
     return (
         <div className="mx-2 mt-6 space-y-6">
@@ -21,7 +20,7 @@ const IndexPage = async () => {
                 </Typography.Heading>
                 <Surface variant="secondary">
                     <ul className="p-2 text-center bg-base-200 menu rounded-box">
-                        {lineIds.map((line: string) => (
+                        {lineIds.map((line) => (
                             <li key={`${line}`} className="flex items-center">
                                 <div
                                     style={{

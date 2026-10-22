@@ -9,7 +9,11 @@ const ToTerminal: FC<Props> = ({ station }) => {
     const t = useTranslations();
     return (
         <div className="flex justify-center text-2xl font-semibold underline">
-            {t("prepositions.to")} {t(`mtr.stations.${station}`)}
+            {t("prepositions.to")}{" "}
+            {
+                // @ts-expect-error FIXME
+                t(`mtr.stations.${station}`)
+            }
         </div>
     );
 };

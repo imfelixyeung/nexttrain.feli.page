@@ -1,5 +1,5 @@
 // Source: https://opendata.mtr.com.hk/doc/Next_Train_DataDictionary_v1.7.pdf
-import linesJson from "./lines.json";
+import { lines as linesJson } from "./lines";
 
 export const lines = Object.fromEntries(
     Object.entries(linesJson).map(([line, value]) => [

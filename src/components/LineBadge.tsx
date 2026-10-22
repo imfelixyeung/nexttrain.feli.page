@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { type Line, lines } from "@/data/lines";
+import { type Line, lines } from "@/data/mtr";
 
 interface Props {
     line: Line;

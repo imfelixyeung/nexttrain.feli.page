@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import type { FC } from "react";
-import { type Line, lines } from "@/data/lines";
+import { type Line, lines } from "@/data/mtr";
 import { createRealtimeLink } from "@/utils/createRealtimeLink";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const LineStationPath: FC<Props> = ({ line, station }) => {
-    const indexOfStation = lines[line].stations.indexOf(station);
+    const indexOfStation = lines[line].stations.indexOf(station as never);
 
     const previousStation =
         indexOfStation !== 0 ? lines[line].stations[indexOfStation - 1] : null;
@@ -54,7 +54,10 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
         <div className="flex flex-col items-center justify-center">
             <div className={bold ? "font-bold line-clamp-1" : "line-clamp-1"}>
                 <Link href={createRealtimeLink(line, station)}>
-                    {t(`mtr.stations.${station}`)}
+                    {
+                        // @ts-expect-error FIXME
+                        t(`mtr.stations.${station}`)
+                    }
                 </Link>
             </div>
             <div className="flex items-center w-full">

@@ -2,7 +2,7 @@ import type { GetStaticPaths, Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import LineBadge from "@/components/LineBadge";
 import LineStationPath from "@/components/LineStationPath";
-import { assertValidLine, lineIds, lines } from "@/data/lines";
+import { assertValidLine, lineIds, lines } from "@/data/mtr";
 import { routing } from "@/i18n/routing";
 import { LineStationData } from "./page.client";
 
@@ -12,7 +12,9 @@ export const generateMetadata = async (
     const { line, station } = await props.params;
     const t = await getTranslations();
 
+    // @ts-expect-error FIXME
     const stationStr = t(`mtr.stations.${station}`);
+    // @ts-expect-error FIXME
     const lineStr = t(`mtr.lines.${line}`);
 
     return {

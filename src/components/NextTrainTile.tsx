@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import type { FC } from "react";
 import type { Direction } from "@/api/interfaces";
-import type { Line } from "@/data/lines";
+import type { Line } from "@/data/mtr";
 import { createRealtimeLink } from "@/utils/createRealtimeLink";
 import PlatformNumber from "./PlatformNumber";
 import TTNTMessage from "./TTNTMessage";
@@ -33,7 +33,11 @@ const NextTrainTile: FC<Props> = ({ data, line }) => {
                     {/* <div>{t(`mtr.lines.${line}`)}</div> */}
                     <div>
                         <Link href={createRealtimeLink(line, dest)}>
-                            {t("prepositions.to")} {t(`mtr.stations.${dest}`)}
+                            {t("prepositions.to")}{" "}
+                            {
+                                // @ts-expect-error hopefully no error
+                                t(`mtr.stations.${dest}`)
+                            }
                         </Link>
                     </div>
                 </div>

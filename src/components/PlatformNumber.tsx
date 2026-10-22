@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { type Line, lines } from "@/data/lines";
+import { type Line, lines } from "@/data/mtr";
 
 interface Props {
     line: Line;
