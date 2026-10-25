@@ -1,6 +1,6 @@
 import moment from "moment";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import type { FC } from "react";
 import type { Direction } from "@/api/interfaces";
 import type { Line } from "@/data/mtr";
@@ -16,6 +16,7 @@ interface Props {
 const NextTrainTile: FC<Props> = ({ data, line }) => {
     const { dest, plat, time, ttnt } = data;
 
+    const locale = useLocale();
     const t = useTranslations();
     const momentTime = moment(time);
     const formattedDepartureTime = momentTime.format("HH:mm");
@@ -32,7 +33,13 @@ const NextTrainTile: FC<Props> = ({ data, line }) => {
                 <div className="flex flex-col">
                     {/* <div>{t(`mtr.lines.${line}`)}</div> */}
                     <div>
-                        <Link href={createRealtimeLink(line, dest)}>
+                        <Link
+                            href={createRealtimeLink({
+                                line,
+                                station: dest,
+                                locale,
+                            })}
+                        >
                             {t("prepositions.to")}{" "}
                             {
                                 // @ts-expect-error hopefully no error

@@ -21,7 +21,11 @@ const IndexPage = async ({ params }: PageProps<"/[lang]/mtr/line/[line]">) => {
                     {lines[line].stations.map((station) => (
                         <li key={`${line}-${station}`}>
                             <Link
-                                href={createRealtimeLink(line, station, locale)}
+                                href={createRealtimeLink({
+                                    line,
+                                    station,
+                                    locale,
+                                })}
                                 className="block w-full px-4 py-2 hover:underline hover:font-semibold"
                             >
                                 {t(`mtr.stations.${station}`)}

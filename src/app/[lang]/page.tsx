@@ -26,7 +26,7 @@ const IndexPage = async () => {
                                     className="h-2 w-6 rounded-full"
                                 ></div>
                                 <Link
-                                    href={createLineLink(line, locale)}
+                                    href={createLineLink({ line, locale })}
                                     className="block w-full px-4 py-2 hover:underline hover:font-semibold mr-6"
                                 >
                                     {t(`mtr.lines.${line}`)}
@@ -47,10 +47,10 @@ const IndexPage = async () => {
                             <li key={station.id} className="flex items-center">
                                 <div className="h-2 w-6 rounded-full"></div>
                                 <Link
-                                    href={createLightRailLink(
-                                        station.id,
+                                    href={createLightRailLink({
+                                        stationId: station.id,
                                         locale,
-                                    )}
+                                    })}
                                     className="block w-full px-4 py-2 hover:underline hover:font-semibold mr-6"
                                 >
                                     {t(`light-rail.stations.${station.id}`)}

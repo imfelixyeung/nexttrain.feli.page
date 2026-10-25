@@ -1,21 +1,30 @@
 import type { Locale } from "next-intl";
-import { routing } from "@/i18n/routing";
 
-export const createRealtimeLink = (
-    line: string,
-    station: string,
-    locale: Locale = routing.defaultLocale,
-) => `/${locale}/mtr/line/${line}/station/${station}/realtime` as const;
+export const createRealtimeLink = ({
+    line,
+    station,
+    locale,
+}: {
+    line: string;
+    station: string;
+    locale: Locale;
+}) => `/${locale}/mtr/line/${line}/station/${station}/realtime` as const;
 
-export const createLineLink = (
-    line: string,
-    locale: Locale = routing.defaultLocale,
-) => `/${locale}/mtr/line/${line}` as const;
+export const createLineLink = ({
+    line,
+    locale,
+}: {
+    line: string;
+    locale: Locale;
+}) => `/${locale}/mtr/line/${line}` as const;
 
-export const createLightRailLink = (
-    stationId: number,
-    locale: Locale = routing.defaultLocale,
-) => `/${locale}/light-rail/station/${stationId}` as const;
+export const createLightRailLink = ({
+    stationId,
+    locale,
+}: {
+    stationId: number;
+    locale: Locale;
+}) => `/${locale}/light-rail/station/${stationId}` as const;
 
-export const createHomeLink = (locale: Locale = routing.defaultLocale) =>
+export const createHomeLink = ({ locale }: { locale: Locale }) =>
     `/${locale}` as const;

@@ -18,7 +18,7 @@ const AppBar = () => {
         <Surface className="sticky inset-y-0 top-0 z-50 flex items-center border-b py-2 px-2">
             <div className="flex-none">
                 <Link
-                    href={createHomeLink(locale)}
+                    href={createHomeLink({ locale })}
                     className={buttonVariants({ isIconOnly: true })}
                 >
                     <Icon size={16} className="size-5" />
@@ -26,7 +26,7 @@ const AppBar = () => {
             </div>
             <div className="flex-1 pl-2">
                 <Link
-                    href={createHomeLink(locale)}
+                    href={createHomeLink({ locale })}
                     className="text-lg font-bold"
                 >
                     Next Train

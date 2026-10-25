@@ -1,6 +1,6 @@
 import { cn } from "@heroui/styles";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import type { FC } from "react";
 import { type Line, lines } from "@/data/mtr";
 import { createRealtimeLink } from "@/utils/urls";
@@ -40,6 +40,7 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
     station,
     bold = false,
 }) => {
+    const locale = await getLocale();
     const t = await getTranslations();
 
     if (!station) {
@@ -61,7 +62,7 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
     return (
         <div className="flex flex-col items-center gap-1">
             <div className={cn(bold && "font-bold", "line-clamp-1 mb-2")}>
-                <Link href={createRealtimeLink(line, station)}>
+                <Link href={createRealtimeLink({ line, station, locale })}>
                     {
                         // @ts-expect-error FIXME
                         t(`mtr.stations.${station}`)
@@ -75,7 +76,10 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
                         backgroundColor: isFirstStation ? undefined : colour,
                     }}
                 ></div>
-                <Link key={line} href={createRealtimeLink(line, station)}>
+                <Link
+                    key={line}
+                    href={createRealtimeLink({ line, station, locale })}
+                >
                     <div
                         className="relative grid w-8 h-8 rounded-full place-items-center"
                         style={{ backgroundColor: colour }}
@@ -97,7 +101,10 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
                 ></div>
             </div>
             {otherLines.map(({ line, colour }) => (
-                <Link key={line} href={createRealtimeLink(line, station)}>
+                <Link
+                    key={line}
+                    href={createRealtimeLink({ line, station, locale })}
+                >
                     <div className="flex justify-center items-center w-full">
                         <div
                             className="relative grid w-8 h-8 rounded-full place-items-center"
