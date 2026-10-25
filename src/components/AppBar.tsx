@@ -20,7 +20,10 @@ const AppBar = () => {
             <div className="flex-none">
                 <Link
                     href={createHomeLink({ locale })}
-                    className={buttonVariants({ isIconOnly: true })}
+                    className={buttonVariants({
+                        isIconOnly: true,
+                        variant: "ghost",
+                    })}
                 >
                     <Icon size={16} className="size-5" />
                 </Link>
