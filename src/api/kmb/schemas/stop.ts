@@ -16,9 +16,11 @@ export const stopSchema = z
             "en-HK": name_en,
             "zh-HK": name_tc,
         } satisfies LocalisedString,
-        lat,
-        long,
+        latitude: lat,
+        longitude: long,
     }));
+
+export type Stop = z.infer<typeof stopSchema>;
 
 export const stopListSchema = z.object({
     type: z.literal("StopList"),
@@ -26,3 +28,5 @@ export const stopListSchema = z.object({
     generated_timestamp: z.coerce.date(),
     data: z.array(stopSchema),
 });
+
+export type StopList = z.infer<typeof stopListSchema>;
