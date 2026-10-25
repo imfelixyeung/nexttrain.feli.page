@@ -1,12 +1,12 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 import type { Direction } from "@/api/interfaces";
 import { createURL, normaliseJson } from "@/api/nexttrain";
 import NextTrainTile from "@/components/NextTrainTile";
 import ToTerminal from "@/components/ToTerminal";
 import { type Line, lines } from "@/data/mtr";
-import { useTranslations } from "next-intl";
 
 const LineStationDirection = ({
     line,
