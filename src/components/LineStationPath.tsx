@@ -1,3 +1,4 @@
+import { cn } from "@heroui/styles";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import type { FC } from "react";
@@ -50,9 +51,16 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
     const isLastStation =
         station === lines[line].stations[lines[line].stations.length - 1];
 
+    const otherLines = Object.entries(lines)
+        .filter(
+            ([l, { stations }]) =>
+                l !== line && stations.find((s) => s === station),
+        )
+        .map(([line, meta]) => ({ line, ...meta }));
+
     return (
-        <div className="flex flex-col items-center justify-center gap-3">
-            <div className={bold ? "font-bold line-clamp-1" : "line-clamp-1"}>
+        <div className="flex flex-col items-center gap-1">
+            <div className={cn(bold && "font-bold", "line-clamp-1 mb-2")}>
                 <Link href={createRealtimeLink(line, station)}>
                     {
                         // @ts-expect-error FIXME
@@ -67,18 +75,20 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
                         backgroundColor: isFirstStation ? undefined : colour,
                     }}
                 ></div>
-                <div
-                    className="relative grid w-8 h-8 rounded-full place-items-center"
-                    style={{ backgroundColor: colour }}
-                >
+                <Link key={line} href={createRealtimeLink(line, station)}>
                     <div
-                        className={`absolute w-8 h-4 ${
-                            isLastStation ? "rounded-r-full" : ""
-                        } ${isFirstStation ? "rounded-l-full" : ""}`}
+                        className="relative grid w-8 h-8 rounded-full place-items-center"
                         style={{ backgroundColor: colour }}
-                    ></div>
-                    <div className="absolute w-4 h-4 bg-white rounded-full"></div>
-                </div>
+                    >
+                        <div
+                            className={`absolute w-8 h-4 ${
+                                isLastStation ? "rounded-r-full" : ""
+                            } ${isFirstStation ? "rounded-l-full" : ""}`}
+                            style={{ backgroundColor: colour }}
+                        ></div>
+                        <div className="absolute w-4 h-4 bg-white rounded-full"></div>
+                    </div>
+                </Link>
                 <div
                     className="flex-grow h-4"
                     style={{
@@ -86,6 +96,18 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
                     }}
                 ></div>
             </div>
+            {otherLines.map(({ line, colour }) => (
+                <Link key={line} href={createRealtimeLink(line, station)}>
+                    <div className="flex justify-center items-center w-full">
+                        <div
+                            className="relative grid w-8 h-8 rounded-full place-items-center"
+                            style={{ backgroundColor: colour }}
+                        >
+                            <div className="absolute w-4 h-4 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                </Link>
+            ))}
         </div>
     );
 };
