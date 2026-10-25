@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { LocalisedString } from "@/i18n/types";
+import { extractLocalisedStrings } from "@/i18n/utils/extract-localised";
 import { boundSchema } from "./common";
 
 export const etaSchema = z
@@ -26,29 +26,26 @@ export const etaSchema = z
             dir,
             service_type,
             seq,
-            dest_tc,
-            dest_en,
             eta_seq,
             eta,
-            rmk_tc,
-            rmk_en,
             data_timestamp,
+            ...rest
         }) => ({
             co,
             route,
             dir,
             service_type,
             seq,
-            destination: {
-                "en-HK": dest_en,
-                "zh-HK": dest_tc,
-            } satisfies LocalisedString,
+            destination: extractLocalisedStrings(rest, {
+                "en-HK": "dest_en",
+                "zh-HK": "dest_tc",
+            }),
             eta_seq,
             eta,
-            remark: {
-                "en-HK": rmk_en,
-                "zh-HK": rmk_tc,
-            } satisfies LocalisedString,
+            remark: extractLocalisedStrings(rest, {
+                "en-HK": "rmk_en",
+                "zh-HK": "rmk_tc",
+            }),
             data_timestamp,
         }),
     );

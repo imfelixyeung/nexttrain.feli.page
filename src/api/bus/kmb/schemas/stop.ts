@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { LocalisedString } from "@/i18n/types";
+import { extractLocalisedStrings } from "@/i18n/utils/extract-localised";
 
 export const stopSchema = z
     .object({
@@ -10,12 +10,12 @@ export const stopSchema = z
         lat: z.coerce.number(),
         long: z.coerce.number(),
     })
-    .transform(({ stop, name_en, name_tc, lat, long }) => ({
+    .transform(({ stop, lat, long, ...rest }) => ({
         stop,
-        name: {
-            "en-HK": name_en,
-            "zh-HK": name_tc,
-        } satisfies LocalisedString,
+        name: extractLocalisedStrings(rest, {
+            "en-HK": "name_en",
+            "zh-HK": "name_tc",
+        }),
         latitude: lat,
         longitude: long,
     }));

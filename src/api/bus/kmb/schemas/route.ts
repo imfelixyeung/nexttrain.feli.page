@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { LocalisedString } from "@/i18n/types";
+import { extractLocalisedStrings } from "@/i18n/utils/extract-localised";
 import { boundSchema } from "./common";
 
 const routeSchema = z
@@ -14,29 +14,19 @@ const routeSchema = z
         dest_tc: z.string(),
         dest_sc: z.string(),
     })
-    .transform(
-        ({
-            route,
-            bound,
-            service_type,
-            orig_en,
-            orig_tc,
-            dest_en,
-            dest_tc,
-        }) => ({
-            route,
-            bound,
-            serviceType: service_type,
-            origin: {
-                "en-HK": orig_en,
-                "zh-HK": orig_tc,
-            } satisfies LocalisedString,
-            destination: {
-                "en-HK": dest_en,
-                "zh-HK": dest_tc,
-            } satisfies LocalisedString,
+    .transform(({ route, bound, service_type, ...rest }) => ({
+        route,
+        bound,
+        serviceType: service_type,
+        origin: extractLocalisedStrings(rest, {
+            "en-HK": "orig_en",
+            "zh-HK": "orig_tc",
         }),
-    );
+        destination: extractLocalisedStrings(rest, {
+            "en-HK": "dest_en",
+            "zh-HK": "dest_tc",
+        }),
+    }));
 
 export const routeListSchema = z.object({
     type: z.literal("RouteList"),
