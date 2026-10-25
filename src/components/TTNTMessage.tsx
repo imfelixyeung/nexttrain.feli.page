@@ -10,11 +10,11 @@ const TTNTMessage: FC<Props> = ({ ttnt }) => {
 
     return ttnt === "0" ? (
         <div>
-            <span className="text-xl font-bold">Departing</span>
+            <span className="text-xl font-bold">{t("transit.departing")}</span>
         </div>
     ) : ttnt === "1" ? (
         <div>
-            <span className="text-xl font-bold">Arriving</span>
+            <span className="text-xl font-bold">{t("transit.arriving")}</span>
         </div>
     ) : (
         <div>

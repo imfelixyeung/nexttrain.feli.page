@@ -50,11 +50,16 @@ const NextTrainTile: FC<Props> = ({ data, line }) => {
                 </div>
                 <div className="text-sm text-base-content">
                     {ttnt === "0" ? (
-                        <div>Departing at {formattedDepartureTime}</div>
+                        <div>
+                            {t("transit.departs-at", {
+                                time: formattedDepartureTime,
+                            })}
+                        </div>
                     ) : (
                         <div>
-                            {ttnt === "1" ? "Arriving" : "Arrivies"} at{" "}
-                            {formattedArrivalTime}
+                            {t("transit.arrives-at", {
+                                time: formattedArrivalTime,
+                            })}
                         </div>
                     )}
                 </div>

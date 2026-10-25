@@ -1,4 +1,11 @@
 {
+    "app": {
+        "name": "下班車"
+    },
+    "transits": {
+        "mtr": "港鐵",
+        "light-rail": "輕鐵"
+    },
     "i18n": {
         "en-HK": "English",
         "zh-HK": "繁體中文"
@@ -193,5 +200,19 @@
     },
     "time": {
         "mins": "分鐘"
+    },
+    "transit": {
+        "arrives-at": "會喺 {time} 到站",
+        "arriving": "到站",
+        "departing": "離站",
+        "departs-at": "會喺 {time} 離站"
+    },
+    "common": {
+        "loading": "載入緊...",
+        "n-car": "{size, number}-卡",
+        "platform-number": "{platform, number} 號月台"
+    },
+    "error": {
+        "unknown": "有啲嘢出錯，請遲啲再試"
     }
 }

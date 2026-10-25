@@ -2,11 +2,14 @@
 
 import { Chip, Typography } from "@heroui/react";
 import { useQuery } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 import { Fragment } from "react/jsx-runtime";
 import { getLightRailStationData } from "@/api/light-rail";
 import type { Station } from "@/data/light-rail";
+import { LocalisedString } from "@/i18n/utils";
 
 export const Schedules = ({ station }: { station: Station }) => {
+    const t = useTranslations();
     const { data, isLoading, isError } = useQuery({
         queryKey: ["getLightRailStationData", station.id],
         queryFn: () => getLightRailStationData(station.id),
@@ -15,8 +18,8 @@ export const Schedules = ({ station }: { station: Station }) => {
         refetchOnWindowFocus: false,
     });
 
-    if (isLoading) return "Loading";
-    if (isError || !data) return "Something went wrong...";
+    if (isLoading) return t("common.loading");
+    if (isError || !data) return t("error.unknown");
 
     return (
         <div className="flex flex-col gap-8 mt-3">
@@ -26,14 +29,16 @@ export const Schedules = ({ station }: { station: Station }) => {
                 return (
                     <div key={platform_id} className="">
                         <Typography.Heading level={2}>
-                            Platform {platform.platform_id}
+                            {t("common.platform-number", {
+                                platform: platform.platform_id,
+                            })}
                         </Typography.Heading>
                         <div className="flex flex-col gap-2 mt-3">
                             {route_list.map((route, index) => {
                                 const {
                                     train_length,
-                                    dest_en,
-                                    time_en,
+                                    destination,
+                                    time,
                                     route_no,
                                 } = route;
                                 return (
@@ -47,14 +52,21 @@ export const Schedules = ({ station }: { station: Station }) => {
                                                 {route_no}
                                             </div>
                                             <div className="text-lg">
-                                                To {dest_en}
+                                                {t("prepositions.to")}{" "}
+                                                <LocalisedString
+                                                    string={destination}
+                                                />
                                             </div>
                                             <Chip size="sm">
-                                                {train_length}-car
+                                                {t("common.n-car", {
+                                                    size: train_length,
+                                                })}
                                             </Chip>
                                         </div>
 
-                                        <div className="text-lg">{time_en}</div>
+                                        <div className="text-lg">
+                                            <LocalisedString string={time} />
+                                        </div>
                                     </div>
                                 );
                             })}

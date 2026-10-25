@@ -1,4 +1,11 @@
 {
+    "app": {
+        "name": "Next Train"
+    },
+    "transits": {
+        "mtr": "MTR",
+        "light-rail": "Light Rail"
+    },
     "i18n": {
         "en-HK": "English",
         "zh-HK": "繁體中文"
@@ -193,5 +200,19 @@
     },
     "time": {
         "mins": "mins"
+    },
+    "transit": {
+        "arrives-at": "Arrives at {time}",
+        "arriving": "Arriving",
+        "departing": "Departing",
+        "departs-at": "Departs at {time}"
+    },
+    "common": {
+        "loading": "Loading...",
+        "n-car": "{size, number}-car",
+        "platform-number": "Platform {platform, number}"
+    },
+    "error": {
+        "unknown": "Something went wrong, please try again later"
     }
 }

@@ -13,7 +13,7 @@ const IndexPage = async () => {
         <div className="mx-2 mt-6 space-y-6">
             <div className="w-full max-w-xl mx-auto">
                 <Typography.Heading level={2} className="mb-3">
-                    MTR
+                    {t("transits.mtr")}
                 </Typography.Heading>
                 <Surface variant="secondary">
                     <ul className="p-2 text-center bg-base-200 menu rounded-box">
@@ -39,7 +39,7 @@ const IndexPage = async () => {
 
             <div className="w-full max-w-xl mx-auto">
                 <Typography.Heading level={2} className="mb-3">
-                    Light Rail
+                    {t("transits.light-rail")}
                 </Typography.Heading>
                 <Surface variant="secondary">
                     <ul className="p-2 text-center bg-base-200 menu rounded-box">

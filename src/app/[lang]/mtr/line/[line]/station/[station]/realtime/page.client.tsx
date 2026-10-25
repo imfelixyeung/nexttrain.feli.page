@@ -6,6 +6,7 @@ import { createURL, normaliseJson } from "@/api/nexttrain";
 import NextTrainTile from "@/components/NextTrainTile";
 import ToTerminal from "@/components/ToTerminal";
 import { type Line, lines } from "@/data/mtr";
+import { useTranslations } from "next-intl";
 
 const LineStationDirection = ({
     line,
@@ -39,6 +40,7 @@ export const LineStationData = ({
     line: Line;
     station: string;
 }) => {
+    const t = useTranslations();
     const { isLoading, data } = useQuery({
         queryKey: ["realtime", line, station],
         queryFn: () =>
@@ -79,7 +81,9 @@ export const LineStationData = ({
                     )}
                 </div>
             )}
-            {isLoading && <div className="text-center">Loading...</div>}
+            {isLoading && (
+                <div className="text-center">{t("common.loading")}</div>
+            )}
             {!isLoading && !hasDownData && !hasUpData && (
                 <div className="text-center">No data available</div>
             )}

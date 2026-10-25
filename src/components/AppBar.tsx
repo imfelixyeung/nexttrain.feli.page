@@ -4,7 +4,7 @@ import { buttonVariants, Surface } from "@heroui/react";
 import { ArrowLeftIcon, TrainIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { createHomeLink } from "@/utils/urls";
 import LocaleChangerMenu from "./LocaleChangerMenu";
 
@@ -13,6 +13,7 @@ const AppBar = () => {
     const atHome = pathname.lastIndexOf("/") === 0;
     const Icon = atHome ? TrainIcon : ArrowLeftIcon;
     const locale = useLocale();
+    const t = useTranslations("app");
 
     return (
         <Surface className="sticky inset-y-0 top-0 z-50 flex items-center border-b py-2 px-2">
@@ -29,7 +30,7 @@ const AppBar = () => {
                     href={createHomeLink({ locale })}
                     className="text-lg font-bold"
                 >
-                    Next Train
+                    {t("name")}
                 </Link>
             </div>
             <div className="flex-none">
