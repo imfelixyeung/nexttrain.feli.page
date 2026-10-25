@@ -132,7 +132,7 @@ export const NearbyBusStops = ({ stops }: { stops: StopList["data"] }) => {
                     >
                         <p>
                             <Link href={`/${locale}/bus/kmb/stops/${stop}`}>
-                                {name["en-HK"]}
+                                {name[locale]}
                             </Link>
                         </p>
                         <p>
