@@ -38,7 +38,7 @@ export const getCtbStops = async () => {
         }
     }
 
-    console.log(stops.size);
+    // TODO: finish this..
 
     return [];
 };

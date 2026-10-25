@@ -5,6 +5,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useGeolocation } from "@uidotdev/usehooks";
 import { LocateFixedIcon } from "lucide-react";
 import { setWorkerUrl } from "maplibre-gl";
+import Link from "next/link";
 import { useLocale } from "next-intl";
 import { useEffect, useMemo, useRef } from "react";
 import MapGL, {
@@ -129,7 +130,11 @@ export const NearbyBusStops = ({ stops }: { stops: StopList["data"] }) => {
                         key={stop}
                         className="max-w-sm flex gap-3 justify-between"
                     >
-                        <p>{name["en-HK"]}</p>
+                        <p>
+                            <Link href={`/${locale}/bus/kmb/stops/${stop}`}>
+                                {name["en-HK"]}
+                            </Link>
+                        </p>
                         <p>
                             {distance < 1_000
                                 ? formatter.m.format(distance)

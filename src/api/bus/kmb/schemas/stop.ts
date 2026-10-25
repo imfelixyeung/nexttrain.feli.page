@@ -29,4 +29,11 @@ export const stopListSchema = z.object({
     data: z.array(stopSchema),
 });
 
+export const stopItemSchema = z.object({
+    type: z.literal("Stop"),
+    version: z.string(),
+    generated_timestamp: z.coerce.date(),
+    data: stopSchema,
+});
+
 export type StopList = z.infer<typeof stopListSchema>;

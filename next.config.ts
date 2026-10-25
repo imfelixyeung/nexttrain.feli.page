@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
             },
         },
     },
+    typedRoutes: true,
 };
 
 const withNextIntl = createNextIntlPlugin();

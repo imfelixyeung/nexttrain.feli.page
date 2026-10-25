@@ -1,0 +1,3 @@
+APIs across different bus providers follow similar structure but not consistent throughout. Data via APIs are limited. For full experience, may require GeoJSON processing.
+
+Will stick with just trains for now...
