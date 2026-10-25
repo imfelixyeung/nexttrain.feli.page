@@ -22,6 +22,14 @@ export const generateMetadata = async (
     } satisfies Metadata;
 };
 
+export function generateStaticParams() {
+    return routing.locales.flatMap((locale) =>
+        Object.entries(lines).flatMap(([line, { stations }]) =>
+            stations.map((station) => ({ lang: locale, line, station })),
+        ),
+    );
+}
+
 const LineStationPage = async ({
     params,
 }: PageProps<"/[lang]/mtr/line/[line]/station/[station]/realtime">) => {

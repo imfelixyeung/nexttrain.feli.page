@@ -3,7 +3,14 @@ import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import LineBadge from "@/components/LineBadge";
 import { assertValidLine, lines } from "@/data/mtr";
+import { routing } from "@/i18n/routing";
 import { createRealtimeLink } from "@/utils/urls";
+
+export function generateStaticParams() {
+    return routing.locales.flatMap((locale) =>
+        Object.keys(lines).map((line) => ({ lang: locale, line })),
+    );
+}
 
 const IndexPage = async ({ params }: PageProps<"/[lang]/mtr/line/[line]">) => {
     const { line } = await params;
