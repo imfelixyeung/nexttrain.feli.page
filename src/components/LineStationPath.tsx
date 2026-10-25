@@ -51,7 +51,7 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
         station === lines[line].stations[lines[line].stations.length - 1];
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-3">
             <div className={bold ? "font-bold line-clamp-1" : "line-clamp-1"}>
                 <Link href={createRealtimeLink(line, station)}>
                     {
@@ -62,25 +62,25 @@ const LineStationPathPin: FC<LineStationPathPinProps> = async ({
             </div>
             <div className="flex items-center w-full">
                 <div
-                    className="flex-grow h-2"
+                    className="flex-grow h-4"
                     style={{
                         backgroundColor: isFirstStation ? undefined : colour,
                     }}
                 ></div>
                 <div
-                    className="relative grid w-4 h-4 rounded-full place-items-center"
+                    className="relative grid w-8 h-8 rounded-full place-items-center"
                     style={{ backgroundColor: colour }}
                 >
                     <div
-                        className={`absolute w-4 h-2 ${
+                        className={`absolute w-8 h-4 ${
                             isLastStation ? "rounded-r-full" : ""
                         } ${isFirstStation ? "rounded-l-full" : ""}`}
                         style={{ backgroundColor: colour }}
                     ></div>
-                    <div className="absolute w-2 h-2 bg-white rounded-full"></div>
+                    <div className="absolute w-4 h-4 bg-white rounded-full"></div>
                 </div>
                 <div
-                    className="flex-grow h-2"
+                    className="flex-grow h-4"
                     style={{
                         backgroundColor: isLastStation ? undefined : colour,
                     }}
