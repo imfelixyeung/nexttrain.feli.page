@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import type { FC } from "react";
 import { type Line, lines } from "@/data/mtr";
-import { createRealtimeLink } from "@/utils/createRealtimeLink";
+import { createRealtimeLink } from "@/utils/urls";
 
 interface Props {
     line: Line;

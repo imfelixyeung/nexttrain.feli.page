@@ -3,10 +3,7 @@ import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { stations } from "@/data/light-rail";
 import { lineIds, lines } from "@/data/mtr";
-import {
-    createLightRailLink,
-    createLineLink,
-} from "@/utils/createRealtimeLink";
+import { createLightRailLink, createLineLink } from "@/utils/urls";
 
 const IndexPage = async () => {
     const t = await getTranslations();

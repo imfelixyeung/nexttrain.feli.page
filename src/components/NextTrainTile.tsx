@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import type { FC } from "react";
 import type { Direction } from "@/api/interfaces";
 import type { Line } from "@/data/mtr";
-import { createRealtimeLink } from "@/utils/createRealtimeLink";
+import { createRealtimeLink } from "@/utils/urls";
 import PlatformNumber from "./PlatformNumber";
 import TTNTMessage from "./TTNTMessage";
 
