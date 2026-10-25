@@ -23,7 +23,7 @@ setWorkerUrl(
     ).toString(),
 );
 
-export const NearbyBusStops = ({ stops }: { stops: StopList }) => {
+export const NearbyBusStops = ({ stops }: { stops: StopList["data"] }) => {
     const locale = useLocale();
     const formatter = useMemo(
         () => ({
@@ -55,7 +55,7 @@ export const NearbyBusStops = ({ stops }: { stops: StopList }) => {
 
     const nearbyStops = useMemo(() => {
         if (target === null) return null;
-        return sortDistances(target, stops.data).slice(0, 50);
+        return sortDistances(target, stops).slice(0, 50);
     }, [stops, target]);
 
     useEffect(() => {
@@ -93,7 +93,7 @@ export const NearbyBusStops = ({ stops }: { stops: StopList }) => {
                     data={
                         {
                             type: "FeatureCollection",
-                            features: stops.data.map((stop) => ({
+                            features: stops.map((stop) => ({
                                 type: "Feature",
                                 geometry: {
                                     type: "Point",

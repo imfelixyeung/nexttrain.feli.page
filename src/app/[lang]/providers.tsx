@@ -8,7 +8,10 @@ const queryClient = new QueryClient();
 
 export const Providers = ({ children }: { children: ReactNode }) => {
     return (
-        <ThemeProvider>
+        <ThemeProvider
+            // https://github.com/pacocoursey/next-themes/issues/387
+            scriptProps={{ type: "application/json" }}
+        >
             <QueryClientProvider client={queryClient}>
                 {children}
             </QueryClientProvider>

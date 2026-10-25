@@ -9,7 +9,7 @@ const Page = async () => {
             <div className="container mx-auto my-8">
                 <Typography.Heading level={1}>Near you</Typography.Heading>
             </div>
-            <NearbyBusStops stops={stops} />
+            <NearbyBusStops stops={stops.data} />
         </>
     );
 };
