@@ -13,7 +13,7 @@ import MapGL, {
     Marker,
     Source,
 } from "react-map-gl/maplibre";
-import type { StopList } from "@/api/kmb/schemas/stop";
+import type { StopList } from "@/api/bus/kmb/schemas/stop";
 import { sortDistances } from "@/utils/coordinates";
 
 setWorkerUrl(
