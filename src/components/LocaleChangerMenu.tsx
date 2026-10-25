@@ -1,8 +1,10 @@
 "use client";
 
+import type { Selection } from "@heroui/react";
 import { Button, Dropdown } from "@heroui/react";
 import { LanguagesIcon } from "lucide-react";
-import { type Locale, useLocale } from "next-intl";
+import { type Locale, useLocale, useTranslations } from "next-intl";
+import { useMemo } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
@@ -11,9 +13,15 @@ const LocaleChangerMenu = () => {
     const router = useRouter();
     const locale = useLocale();
     const availableLocales = routing.locales;
+    const t = useTranslations("i18n");
 
-    const handleLocaleChange = async (locale: Locale) => {
-        router.push(pathname, { locale });
+    const selected = useMemo(() => new Set([locale]), [locale]);
+
+    const handleLocaleChange = async (selection: Selection) => {
+        if (selection === "all") return;
+        const [locale] = selection.values();
+        if (!locale) return;
+        router.replace(pathname, { locale: locale as Locale });
     };
 
     return (
@@ -24,19 +32,18 @@ const LocaleChangerMenu = () => {
                 </Button>
                 <Dropdown.Popover>
                     <Dropdown.Menu
-                        selectedKeys={[locale]}
-                        onAction={(locale) =>
-                            void handleLocaleChange(locale as Locale)
-                        }
+                        selectionMode="single"
+                        selectedKeys={selected}
+                        onSelectionChange={handleLocaleChange}
                     >
                         {availableLocales.map((locale) => (
                             <Dropdown.Item
                                 id={locale}
-                                textValue={locale}
+                                textValue={t(locale)}
                                 key={locale}
                             >
                                 <Dropdown.ItemIndicator />
-                                {locale}
+                                {t(locale)}
                             </Dropdown.Item>
                         ))}
                     </Dropdown.Menu>

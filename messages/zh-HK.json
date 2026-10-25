@@ -1,4 +1,8 @@
 {
+    "i18n": {
+        "en-HK": "English",
+        "zh-HK": "繁體中文"
+    },
     "mtr": {
         "lines": {
             "AEL": "機場快線",
