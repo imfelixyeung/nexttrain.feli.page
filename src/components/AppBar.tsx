@@ -16,7 +16,7 @@ const AppBar = () => {
     const t = useTranslations("app");
 
     return (
-        <Surface className="sticky inset-y-0 top-0 z-50 flex items-center border-b py-2 px-2">
+        <Surface className="sticky inset-y-0 top-0 z-50 flex items-center border-b px-2 py-2">
             <div className="flex-none">
                 <Link
                     href={createHomeLink({ locale })}

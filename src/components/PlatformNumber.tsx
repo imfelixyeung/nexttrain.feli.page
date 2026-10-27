@@ -12,10 +12,10 @@ const PlatformNumber: FC<Props> = ({ line, platform, variant = "default" }) => {
     if (variant === "small") {
         return (
             <div
-                className="inline-block w-6 h-6 text-white rounded-full"
+                className="inline-block h-6 w-6 rounded-full text-white"
                 style={{ backgroundColor: colour }}
             >
-                <span className="grid w-full h-full text-sm place-items-center">
+                <span className="grid h-full w-full place-items-center text-sm">
                     {platform}
                 </span>
             </div>
@@ -23,10 +23,10 @@ const PlatformNumber: FC<Props> = ({ line, platform, variant = "default" }) => {
     }
     return (
         <div
-            className="inline-block w-8 h-8 text-white rounded-full"
+            className="inline-block h-8 w-8 rounded-full text-white"
             style={{ backgroundColor: colour }}
         >
-            <span className="grid w-full h-full text-base place-items-center">
+            <span className="grid h-full w-full place-items-center text-base">
                 {platform}
             </span>
         </div>

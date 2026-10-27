@@ -16,7 +16,7 @@ const Page = async ({
     assertValidStation(stationId);
 
     return (
-        <div className="container mx-auto max-w-lg my-6 p-3">
+        <div className="container mx-auto my-6 max-w-lg p-3">
             <Typography.Heading level={1}>
                 {t(`light-rail.stations.${stationId}`)}
             </Typography.Heading>

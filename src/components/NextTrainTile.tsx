@@ -25,11 +25,11 @@ const NextTrainTile: FC<Props> = ({ data, line }) => {
         .format("HH:mm");
 
     return (
-        <div className="flex items-center flex-grow max-w-lg">
-            <div className="grid mx-3 place-items-center">
+        <div className="flex max-w-lg grow items-center">
+            <div className="mx-3 grid place-items-center">
                 <PlatformNumber platform={plat} line={line} />
             </div>
-            <div className="flex flex-col flex-grow">
+            <div className="flex grow flex-col">
                 <div className="flex flex-col">
                     {/* <div>{t(`mtr.lines.${line}`)}</div> */}
                     <div>
@@ -48,7 +48,7 @@ const NextTrainTile: FC<Props> = ({ data, line }) => {
                         </Link>
                     </div>
                 </div>
-                <div className="text-sm text-base-content">
+                <div className="text-base-content text-sm">
                     {ttnt === "0" ? (
                         <div>
                             {t("transit.departs-at", {

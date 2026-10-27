@@ -140,7 +140,7 @@ export const NearbyBusStopsInner = ({ stops }: { stops: StopList["data"] }) => {
                 {nearbyStops?.map(({ stop, name, distance }) => (
                     <div
                         key={stop}
-                        className="max-w-sm flex gap-3 justify-between"
+                        className="flex max-w-sm justify-between gap-3"
                     >
                         <p>
                             <Link

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 const Hero = ({ title }: { title: ReactNode }) => {
     return (
-        <header className="py-8 border-b">
+        <header className="border-b py-8">
             <div className="container mx-auto">{title}</div>
         </header>
     );

@@ -38,7 +38,7 @@ const LineStationPage = async ({
 
     return (
         <div>
-            <div className="flex justify-center mt-8">
+            <div className="mt-8 flex justify-center">
                 <LineBadge line={line} />
             </div>
             <div className="my-6">

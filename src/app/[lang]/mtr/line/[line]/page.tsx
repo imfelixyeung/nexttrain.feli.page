@@ -20,11 +20,11 @@ const IndexPage = async ({ params }: PageProps<"/[lang]/mtr/line/[line]">) => {
 
     return (
         <div className="mx-2 mt-6 space-y-6">
-            <div className="flex justify-center mt-8">
+            <div className="mt-8 flex justify-center">
                 <LineBadge line={line} />
             </div>
-            <Surface variant="secondary" className="w-full max-w-xl mx-auto">
-                <ul className="p-2 text-center bg-base-200 menu rounded-box">
+            <Surface variant="secondary" className="mx-auto w-full max-w-xl">
+                <ul className="bg-base-200 menu rounded-box p-2 text-center">
                     {lines[line].stations.map((station) => (
                         <li key={`${line}-${station}`}>
                             <Link
@@ -33,7 +33,7 @@ const IndexPage = async ({ params }: PageProps<"/[lang]/mtr/line/[line]">) => {
                                     station,
                                     locale,
                                 })}
-                                className="block w-full px-4 py-2 hover:underline hover:font-semibold"
+                                className="block w-full px-4 py-2 hover:font-semibold hover:underline"
                             >
                                 {t(`mtr.stations.${station}`)}
                             </Link>

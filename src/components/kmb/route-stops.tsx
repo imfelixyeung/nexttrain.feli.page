@@ -41,18 +41,18 @@ export const KMBRouteStops = ({
                 return (
                     <li
                         key={routeStop.seq}
-                        className="grid grid-cols-subgrid col-span-2 gap-3"
+                        className="col-span-2 grid grid-cols-subgrid gap-3"
                     >
                         <div
                             className={cn(
-                                "bg-red-600 w-4 h-full",
+                                "h-full w-4 bg-red-600",
                                 firstStop && "rounded-t-full",
                                 lastStop && "rounded-b-full",
                             )}
                         >
                             <div
                                 className={cn(
-                                    "size-2.5 bg-white my-2 rounded-full mx-auto",
+                                    "mx-auto my-2 size-2.5 rounded-full bg-white",
                                     pastStop && "opacity-50",
                                 )}
                             ></div>
@@ -63,7 +63,7 @@ export const KMBRouteStops = ({
                                 <KMBStop route={route} stop={stop} />
                             </span>
                             {currentStop && (
-                                <div className="pl-3 border-l ml-3">
+                                <div className="ml-3 border-l pl-3">
                                     <KMBRouteStopETA
                                         route={route}
                                         routeStop={routeStop}

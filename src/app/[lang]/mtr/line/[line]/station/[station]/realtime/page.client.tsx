@@ -61,7 +61,7 @@ export const LineStationData = ({
                 <div
                     className={
                         hasDownData && hasUpData
-                            ? "space-y-8 lg:space-y-0 justify-center grid-cols-2 lg:grid"
+                            ? "grid-cols-2 justify-center space-y-8 lg:grid lg:space-y-0"
                             : ""
                     }
                 >

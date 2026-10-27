@@ -7,7 +7,7 @@ export const KMBRoute = ({ route: r }: { route: Route }) => {
     return (
         <div className="flex items-center gap-2">
             <KMBRouteBadge route={route} />
-            <span className="capitalize font-medium">
+            <span className="font-medium capitalize">
                 <LocalisedString string={destination} transform="capital" />
             </span>
         </div>

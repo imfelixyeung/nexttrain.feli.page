@@ -22,7 +22,7 @@ export const Schedules = ({ station }: { station: Station }) => {
     if (isError || !data) return t("error.unknown");
 
     return (
-        <div className="flex flex-col gap-8 mt-3">
+        <div className="mt-3 flex flex-col gap-8">
             {data.platform_list.map((platform) => {
                 const { platform_id, route_list } = platform;
                 if (!route_list) return <Fragment key={platform_id} />;
@@ -33,7 +33,7 @@ export const Schedules = ({ station }: { station: Station }) => {
                                 platform: platform.platform_id,
                             })}
                         </Typography.Heading>
-                        <div className="flex flex-col gap-2 mt-3">
+                        <div className="mt-3 flex flex-col gap-2">
                             {route_list.map((route, index) => {
                                 const {
                                     train_length,
@@ -47,8 +47,8 @@ export const Schedules = ({ station }: { station: Station }) => {
                                         key={index}
                                         className="flex items-center gap-3"
                                     >
-                                        <div className="grow flex gap-3 items-center">
-                                            <div className="ring-black px-2 text-xs rounded-full ring border-blue-600 border-2 flex justify-center items-center h-5 font-bold w-[5ch]">
+                                        <div className="flex grow items-center gap-3">
+                                            <div className="flex h-5 w-[5ch] items-center justify-center rounded-full border-2 border-blue-600 px-2 text-xs font-bold ring ring-black">
                                                 {route_no}
                                             </div>
                                             <div className="text-lg">

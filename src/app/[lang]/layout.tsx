@@ -35,7 +35,7 @@ const Layout = async ({ children, params }: LayoutProps<"/[lang]">) => {
                 <NextIntlClientProvider>
                     <AppBar />
                     <Providers>
-                        <div className="mb-16 text-base-content">
+                        <div className="text-base-content mb-16">
                             {children}
                         </div>
                     </Providers>

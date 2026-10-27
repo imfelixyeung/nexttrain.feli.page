@@ -1,6 +1,6 @@
 export const KMBRouteBadge = ({ route }: { route: string }) => {
     return (
-        <div className="bg-red-600 text-white rounded inline-block px-1.5">
+        <div className="inline-block rounded bg-red-600 px-1.5 text-white">
             {route}
         </div>
     );

@@ -19,6 +19,9 @@
             "preset": "recommended",
             "correctness": {
                 "noUnusedImports": { "level": "error", "fix": "safe" }
+            },
+            "nursery": {
+                "useTailwindSortedClasses": { "level": "error", "fix": "safe" }
             }
         }
     },

@@ -11,12 +11,12 @@ const IndexPage = async () => {
 
     return (
         <div className="mx-2 mt-6 space-y-6">
-            <div className="w-full max-w-xl mx-auto">
+            <div className="mx-auto w-full max-w-xl">
                 <Typography.Heading level={2} className="mb-3">
                     {t("transits.mtr")}
                 </Typography.Heading>
                 <Surface variant="secondary">
-                    <ul className="p-2 text-center bg-base-200 menu rounded-box">
+                    <ul className="bg-base-200 menu rounded-box p-2 text-center">
                         {lineIds.map((line) => (
                             <li key={`${line}`} className="flex items-center">
                                 <div
@@ -27,7 +27,7 @@ const IndexPage = async () => {
                                 ></div>
                                 <Link
                                     href={createLineLink({ line, locale })}
-                                    className="block w-full px-4 py-2 hover:underline hover:font-semibold mr-6"
+                                    className="mr-6 block w-full px-4 py-2 hover:font-semibold hover:underline"
                                 >
                                     {t(`mtr.lines.${line}`)}
                                 </Link>
@@ -37,12 +37,12 @@ const IndexPage = async () => {
                 </Surface>
             </div>
 
-            <div className="w-full max-w-xl mx-auto">
+            <div className="mx-auto w-full max-w-xl">
                 <Typography.Heading level={2} className="mb-3">
                     {t("transits.light-rail")}
                 </Typography.Heading>
                 <Surface variant="secondary">
-                    <ul className="p-2 text-center bg-base-200 menu rounded-box">
+                    <ul className="bg-base-200 menu rounded-box p-2 text-center">
                         {stations.map((station) => (
                             <li key={station.id} className="flex items-center">
                                 <div className="h-2 w-6 rounded-full"></div>
@@ -51,7 +51,7 @@ const IndexPage = async () => {
                                         stationId: station.id,
                                         locale,
                                     })}
-                                    className="block w-full px-4 py-2 hover:underline hover:font-semibold mr-6"
+                                    className="mr-6 block w-full px-4 py-2 hover:font-semibold hover:underline"
                                 >
                                     {t(`light-rail.stations.${station.id}`)}
                                 </Link>
