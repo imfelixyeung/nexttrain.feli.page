@@ -7,6 +7,7 @@ import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client
 import { ThemeProvider } from "next-themes";
 import type { ReactNode } from "react";
 
+// TODO: Invalidate queries on a query by query basis.
 const persister = createAsyncStoragePersister({
     storage: typeof window === "object" ? window.localStorage : undefined,
 });
@@ -21,11 +22,6 @@ export const Providers = ({ children }: { children: ReactNode }) => {
             <PersistQueryClientProvider
                 client={queryClient}
                 persistOptions={{ persister }}
-                onSuccess={() => {
-                    queryClient.resumePausedMutations().then(() => {
-                        queryClient.invalidateQueries();
-                    });
-                }}
             >
                 {children}
                 <ReactQueryDevtools initialIsOpen={false} />
