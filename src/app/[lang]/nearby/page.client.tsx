@@ -2,11 +2,12 @@
 
 import type { FeatureCollection } from "geojson";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { useQuery } from "@tanstack/react-query";
 import { useGeolocation } from "@uidotdev/usehooks";
 import { LocateFixedIcon } from "lucide-react";
 import { setWorkerUrl } from "maplibre-gl";
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef } from "react";
 import MapGL, {
     Layer,
@@ -14,6 +15,7 @@ import MapGL, {
     Marker,
     Source,
 } from "react-map-gl/maplibre";
+import { getStops } from "@/api/bus/kmb";
 import type { StopList } from "@/api/bus/kmb/schemas/stop";
 import { sortDistances } from "@/utils/coordinates";
 
@@ -24,7 +26,17 @@ setWorkerUrl(
     ).toString(),
 );
 
-export const NearbyBusStops = ({ stops }: { stops: StopList["data"] }) => {
+export const NearbyBusStops = () => {
+    const t = useTranslations();
+    const { data } = useQuery({
+        queryKey: ["getStops"],
+        queryFn: getStops,
+    });
+    if (!data) return t("common.loading");
+    return <NearbyBusStopsInner stops={data.data} />;
+};
+
+export const NearbyBusStopsInner = ({ stops }: { stops: StopList["data"] }) => {
     const locale = useLocale();
     const formatter = useMemo(
         () => ({
