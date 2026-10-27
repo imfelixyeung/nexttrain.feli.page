@@ -2,18 +2,14 @@
 
 import { Typography } from "@heroui/react";
 import { useQuery } from "@tanstack/react-query";
-import { useLocale, useTranslations } from "next-intl";
-import { getRoutes } from "@/api/bus/kmb";
+import { useTranslations } from "next-intl";
+import { kmbQueries } from "@/api/bus/kmb/queries";
 import type { Route } from "@/api/bus/kmb/schemas/route";
 import { KMBRoute } from "@/components/kmb/route";
 
 export const RouteList = () => {
-    const locale = useLocale();
     const t = useTranslations();
-    const { data, isLoading } = useQuery({
-        queryKey: ["getRoutes"],
-        queryFn: getRoutes,
-    });
+    const { data, isLoading } = useQuery(kmbQueries.routes());
     if (!data || isLoading) return t("common.loading");
 
     const routesByRoutes = data.data.reduce((map, curr) => {

@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { getETA } from "@/api/bus/kmb";
+import { kmbQueries } from "@/api/bus/kmb/queries";
 import type { Route } from "@/api/bus/kmb/schemas/route";
 import type { RouteStop } from "@/api/bus/kmb/schemas/route-stop";
 import { LocalisedString } from "@/i18n/utils";
@@ -15,24 +15,13 @@ const KMBRouteStopETA = ({
     route: Route;
     routeStop: RouteStop;
 }) => {
-    const { data } = useQuery({
-        queryKey: [
-            {
-                stop: routeStop.stop,
-                route: route.route,
-                serviceType: route.serviceType,
-            },
-        ],
-        queryFn: () =>
-            getETA({
-                stop: routeStop.stop,
-                route: route.route,
-                serviceType: route.serviceType,
-            }),
-        refetchInterval: 10_000,
-        refetchIntervalInBackground: true,
-        refetchOnWindowFocus: false,
-    });
+    const { data } = useQuery(
+        kmbQueries.eta({
+            stop: routeStop.stop,
+            route: route.route,
+            serviceType: route.serviceType,
+        }),
+    );
 
     const filteredData = useMemo(() => {
         if (!data) return null;
