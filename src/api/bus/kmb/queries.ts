@@ -1,5 +1,11 @@
 import { queryOptions } from "@tanstack/react-query";
-import { getETA, getRouteStopsByRoute, getRoutes, getStops } from ".";
+import {
+    getETA,
+    getRouteLine,
+    getRouteStopsByRoute,
+    getRoutes,
+    getStops,
+} from ".";
 
 export const kmbQueries = {
     all: () => ["bus/kmb"] as const,
@@ -59,5 +65,10 @@ export const kmbQueries = {
             refetchInterval: 10_000,
             refetchIntervalInBackground: true,
             refetchOnWindowFocus: false,
+        }),
+    routeLine: ({ route }: { route: string }) =>
+        queryOptions({
+            queryKey: [...kmbQueries.all(), "getRouteLine"] as const,
+            queryFn: () => getRouteLine({ route }),
         }),
 };

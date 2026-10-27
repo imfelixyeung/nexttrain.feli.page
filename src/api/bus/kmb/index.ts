@@ -1,5 +1,6 @@
 import { etaListSchema } from "./schemas/eta";
 import { routeListSchema } from "./schemas/route";
+import { routeLineSchema } from "./schemas/route-line";
 import { routeStopsResponseSchema } from "./schemas/route-stop";
 import { stopItemSchema, stopListSchema } from "./schemas/stop";
 
@@ -67,4 +68,20 @@ export const getETA = async ({
     const response = await fetch(url);
     const json = await response.json();
     return etaListSchema.parseAsync(json);
+};
+
+export const getRouteLine = async ({ route }: { route: string }) => {
+    const url = new URL(
+        "https://portal.csdi.gov.hk/server/rest/services/common/td_rcd_1638844988873_41214/FeatureServer/0/query",
+    );
+    url.searchParams.set("f", "geojson");
+    url.searchParams.set(
+        "where",
+        `COMPANY_CODE='KMB' AND ROUTE_NAMEE='${route}'`,
+    );
+    url.searchParams.set("outFields", "*");
+
+    const response = await fetch(url);
+    const json = await response.json();
+    return routeLineSchema.parseAsync(json);
 };

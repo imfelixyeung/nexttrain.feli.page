@@ -35,6 +35,7 @@ export const LayoutClient = ({ children }: { children: ReactNode }) => {
         kmbQueries.routeStops({ route, direction: bound, serviceType }),
     );
     const { data: stops } = useQuery(kmbQueries.stops());
+    const { data: routeLine } = useQuery(kmbQueries.routeLine({ route }));
 
     const routeStopsWithStopData = useMemo(() => {
         if (!routeStops || !stops) return [];
@@ -115,9 +116,26 @@ export const LayoutClient = ({ children }: { children: ReactNode }) => {
                               zoom: 8,
                           }
                 }
-                style={{ width: "100%", height: 200 }}
+                style={{ width: "100%", height: 300 }}
                 mapStyle="https://tiles.openfreemap.org/styles/liberty"
             >
+                {routeLine && (
+                    <Source
+                        id="route-line"
+                        type="geojson"
+                        data={routeLine satisfies FeatureCollection}
+                    >
+                        <Layer
+                            id="route-line"
+                            type="line"
+                            source="route-line"
+                            paint={{
+                                "line-color": "red",
+                                "line-width": 2,
+                            }}
+                        />
+                    </Source>
+                )}
                 <Source
                     id="stops"
                     type="geojson"
