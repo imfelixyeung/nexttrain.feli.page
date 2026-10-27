@@ -22,7 +22,7 @@ export const PageClient = () => {
         queryKey: ["getRoutes"],
         queryFn: getRoutes,
     });
-    const { data: routeStops, ...rest } = useQuery({
+    const { data: routeStops } = useQuery({
         queryKey: ["getRouteStopsByRoute", route, bound, serviceType],
         queryFn: () =>
             getRouteStopsByRoute({ route, direction: bound, serviceType }),
