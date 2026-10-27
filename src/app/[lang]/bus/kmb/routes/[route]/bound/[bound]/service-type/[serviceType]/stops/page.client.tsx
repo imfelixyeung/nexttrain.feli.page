@@ -3,11 +3,11 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useQuery } from "@tanstack/react-query";
 import type { FeatureCollection } from "geojson";
-import { setWorkerUrl } from "maplibre-gl";
+import { LngLat, LngLatBounds, setWorkerUrl } from "maplibre-gl";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useMemo } from "react";
-import MapGL, { Layer, Source } from "react-map-gl/maplibre";
+import { useEffect, useMemo, useRef } from "react";
+import MapGL, { Layer, type MapRef, Source } from "react-map-gl/maplibre";
 import { getRouteStopsByRoute, getRoutes, getStops } from "@/api/bus/kmb";
 import Content from "@/components/content";
 import Hero from "@/components/hero";
@@ -22,6 +22,7 @@ setWorkerUrl(
 );
 
 export const PageClient = () => {
+    const mapRef = useRef<MapRef>(null);
     const t = useTranslations();
     const { stop } = useParams<{ stop?: string }>();
 
@@ -61,6 +62,25 @@ export const PageClient = () => {
         () => routeStopsWithStopData.find((rs) => rs.stop?.stop === stop),
         [stop, routeStopsWithStopData],
     );
+    const bounds = useMemo(() => {
+        const first = routeStopsWithStopData.find((rs) => rs.stop);
+        if (!first?.stop) return null;
+        return routeStopsWithStopData.reduce(
+            (bounds, { stop }) => {
+                if (!stop) return bounds;
+                return bounds.extend(new LngLat(stop.longitude, stop.latitude));
+            },
+            new LngLatBounds(
+                new LngLat(first.stop.longitude, first.stop.latitude),
+            ),
+        );
+    }, [routeStopsWithStopData]);
+
+    useEffect(() => {
+        if (currentStop) return;
+        if (!bounds) return;
+        mapRef.current?.fitBounds(bounds, { padding: 16 });
+    }, [bounds, currentStop]);
 
     if (!routes || !routeStops || !stops) return t("common.loading");
 
@@ -83,6 +103,7 @@ export const PageClient = () => {
                 }
             />
             <MapGL
+                ref={mapRef}
                 initialViewState={
                     currentStop?.stop
                         ? {
@@ -93,7 +114,7 @@ export const PageClient = () => {
                         : {
                               longitude: 114.177216,
                               latitude: 22.302711,
-                              zoom: 9,
+                              zoom: 8,
                           }
                 }
                 style={{ width: "100%", height: 200 }}
