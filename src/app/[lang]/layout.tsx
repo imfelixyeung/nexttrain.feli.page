@@ -5,8 +5,6 @@ import AppBar from "@/components/AppBar";
 import { routing } from "@/i18n/routing";
 import { Providers } from "./providers";
 
-export const instant = false;
-
 export function generateStaticParams() {
     return routing.locales.map((locale) => ({ lang: locale }));
 }
