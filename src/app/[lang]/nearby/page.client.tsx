@@ -131,7 +131,10 @@ export const NearbyBusStops = ({ stops }: { stops: StopList["data"] }) => {
                         className="max-w-sm flex gap-3 justify-between"
                     >
                         <p>
-                            <Link href={`/${locale}/bus/kmb/stops/${stop}`}>
+                            <Link
+                                // @ts-expect-error FIXME
+                                href={`/${locale}/bus/kmb/stops/${stop}`}
+                            >
                                 {name[locale]}
                             </Link>
                         </p>

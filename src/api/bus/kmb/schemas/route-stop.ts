@@ -9,9 +9,13 @@ export const routeStopSchema = z.object({
     stop: z.string(),
 });
 
-export const schema = z.object({
-    type: z.literal("RouteStopList"),
+export type RouteStop = z.infer<typeof routeStopSchema>;
+
+export const routeStopsResponseSchema = z.object({
+    type: z.literal("RouteStop"),
     version: z.string(),
     generated_timestamp: z.coerce.date(),
     data: z.array(routeStopSchema),
 });
+
+export type RouteStopsResponseSchema = z.infer<typeof routeStopsResponseSchema>;

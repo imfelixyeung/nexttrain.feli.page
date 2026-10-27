@@ -28,6 +28,8 @@ const routeSchema = z
         }),
     }));
 
+export type Route = z.infer<typeof routeSchema>;
+
 export const routeListSchema = z.object({
     type: z.literal("RouteList"),
     version: z.string(),

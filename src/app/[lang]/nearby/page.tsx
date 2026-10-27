@@ -1,5 +1,5 @@
 import { Typography } from "@heroui/react";
-import { getStops } from "@/api/bus/kmb";
+import { getStops } from "@/api/bus/kmb/server";
 import { NearbyBusStops } from "./page.client";
 
 const Page = async () => {

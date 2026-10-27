@@ -42,10 +42,12 @@ export const etaSchema = z
             }),
             eta_seq,
             eta,
-            remark: extractLocalisedStrings(rest, {
-                "en-HK": "rmk_en",
-                "zh-HK": "rmk_tc",
-            }),
+            remark: rest.rmk_en.trim()
+                ? extractLocalisedStrings(rest, {
+                      "en-HK": "rmk_en",
+                      "zh-HK": "rmk_tc",
+                  })
+                : null,
             data_timestamp,
         }),
     );
