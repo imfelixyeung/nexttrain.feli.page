@@ -1,6 +1,7 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+import { useMemo } from "react";
 import { getETA } from "@/api/bus/kmb";
 import type { Route } from "@/api/bus/kmb/schemas/route";
 import type { RouteStop } from "@/api/bus/kmb/schemas/route-stop";
@@ -33,11 +34,20 @@ const KMBRouteStopETA = ({
         refetchOnWindowFocus: false,
     });
 
-    if (!data) return null;
+    const filteredData = useMemo(() => {
+        if (!data) return null;
+
+        return data.data.filter(
+            (d) =>
+                d.dir === route.bound && d.service_type === route.serviceType,
+        );
+    }, [data, route]);
+
+    if (!data || !filteredData) return null;
 
     return (
         <div key={data.generated_timestamp}>
-            {data.data.map(({ eta, eta_seq, remark }) => (
+            {filteredData.map(({ eta, eta_seq, remark }) => (
                 <div key={eta_seq}>
                     {eta ? <DistanceToNow time={eta} /> : "-"}
 

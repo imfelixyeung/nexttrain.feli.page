@@ -7,7 +7,7 @@ export const etaSchema = z
         co: z.string(),
         route: z.string(),
         dir: boundSchema,
-        service_type: z.number(),
+        service_type: z.coerce.string(),
         seq: z.number(),
         dest_tc: z.string(),
         dest_sc: z.string(),
