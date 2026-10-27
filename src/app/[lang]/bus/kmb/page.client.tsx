@@ -12,7 +12,7 @@ export const RouteList = () => {
     const locale = useLocale();
     const t = useTranslations();
     const { data, isLoading } = useQuery({
-        queryKey: [getRoutes],
+        queryKey: ["getRoutes"],
         queryFn: getRoutes,
     });
     if (!data || isLoading) return t("common.loading");
