@@ -2,7 +2,6 @@
 
 import { Typography } from "@heroui/react";
 import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { getRoutes } from "@/api/bus/kmb";
 import type { Route } from "@/api/bus/kmb/schemas/route";
@@ -33,13 +32,7 @@ export const RouteList = () => {
                             const { bound, serviceType } = routeData;
                             return (
                                 <li key={`${route}-${bound}-${serviceType}`}>
-                                    <Link
-                                        href={
-                                            `/${locale}/bus/kmb/routes/${route}/bound/${bound}/service-type/${serviceType}/stops` as const
-                                        }
-                                    >
-                                        <KMBRoute route={routeData} />
-                                    </Link>
+                                    <KMBRoute route={routeData} />
                                 </li>
                             );
                         })}
