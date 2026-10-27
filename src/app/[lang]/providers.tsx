@@ -22,6 +22,9 @@ export const Providers = ({ children }: { children: ReactNode }) => {
             <PersistQueryClientProvider
                 client={queryClient}
                 persistOptions={{ persister }}
+                onSuccess={() => {
+                    queryClient.resumePausedMutations();
+                }}
             >
                 {children}
                 <ReactQueryDevtools initialIsOpen={false} />
