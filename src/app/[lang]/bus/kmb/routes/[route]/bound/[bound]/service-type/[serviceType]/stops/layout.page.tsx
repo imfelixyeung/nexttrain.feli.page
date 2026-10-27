@@ -3,7 +3,7 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useQuery } from "@tanstack/react-query";
 import type { FeatureCollection } from "geojson";
-import { LngLat, LngLatBounds } from "maplibre-gl";
+import { LngLat, LngLatBounds, setWorkerUrl } from "maplibre-gl";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useEffect, useMemo, useRef } from "react";
@@ -11,6 +11,13 @@ import MapGL, { Layer, type MapRef, Source } from "react-map-gl/maplibre";
 import { kmbQueries } from "@/api/bus/kmb/queries";
 import Hero from "@/components/hero";
 import { KMBRoute } from "@/components/kmb/route";
+
+setWorkerUrl(
+    new URL(
+        "maplibre-gl/dist/maplibre-gl-worker.mjs",
+        import.meta.url,
+    ).toString(),
+);
 
 export const LayoutClient = ({ children }: { children: ReactNode }) => {
     const mapRef = useRef<MapRef>(null);
