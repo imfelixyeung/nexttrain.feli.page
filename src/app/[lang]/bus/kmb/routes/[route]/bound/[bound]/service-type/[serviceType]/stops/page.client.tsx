@@ -1,16 +1,30 @@
 "use client";
 
+import "maplibre-gl/dist/maplibre-gl.css";
 import { useQuery } from "@tanstack/react-query";
+import type { FeatureCollection } from "geojson";
+import { setWorkerUrl } from "maplibre-gl";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useMemo } from "react";
+import MapGL, { Layer, Source } from "react-map-gl/maplibre";
 import { getRouteStopsByRoute, getRoutes, getStops } from "@/api/bus/kmb";
 import Content from "@/components/content";
 import Hero from "@/components/hero";
 import { KMBRoute } from "@/components/kmb/route";
 import { KMBRouteStops } from "@/components/kmb/route-stops";
 
+setWorkerUrl(
+    new URL(
+        "maplibre-gl/dist/maplibre-gl-worker.mjs",
+        import.meta.url,
+    ).toString(),
+);
+
 export const PageClient = () => {
     const t = useTranslations();
+    const { stop } = useParams<{ stop?: string }>();
+
     const { route, bound, serviceType } =
         useParams<
             Awaited<
@@ -32,6 +46,22 @@ export const PageClient = () => {
         queryFn: getStops,
     });
 
+    const routeStopsWithStopData = useMemo(() => {
+        if (!routeStops || !stops) return [];
+        return (
+            routeStops?.data
+                .map((rs) => ({
+                    ...rs,
+                    stop: stops.data.find((s) => s.stop === rs.stop) ?? null,
+                }))
+                .filter((rs) => rs.stop !== null) ?? []
+        );
+    }, [routeStops, stops]);
+    const currentStop = useMemo(
+        () => routeStopsWithStopData.find((rs) => rs.stop?.stop === stop),
+        [stop, routeStopsWithStopData],
+    );
+
     if (!routes || !routeStops || !stops) return t("common.loading");
 
     const routeData = routes.data.find(
@@ -52,6 +82,58 @@ export const PageClient = () => {
                     </h1>
                 }
             />
+            <MapGL
+                initialViewState={
+                    currentStop?.stop
+                        ? {
+                              longitude: currentStop.stop.longitude,
+                              latitude: currentStop.stop.latitude,
+                              zoom: 15,
+                          }
+                        : {
+                              longitude: 114.177216,
+                              latitude: 22.302711,
+                              zoom: 9,
+                          }
+                }
+                style={{ width: "100%", height: 200 }}
+                mapStyle="https://tiles.openfreemap.org/styles/liberty"
+            >
+                <Source
+                    id="stops"
+                    type="geojson"
+                    data={
+                        {
+                            type: "FeatureCollection",
+                            features: routeStopsWithStopData.map(
+                                ({ stop }) => ({
+                                    type: "Feature",
+                                    geometry: {
+                                        type: "Point",
+                                        coordinates: [
+                                            stop?.longitude ?? 0,
+                                            stop?.latitude ?? 0,
+                                        ],
+                                    },
+                                    properties: stop,
+                                }),
+                            ),
+                        } satisfies FeatureCollection
+                    }
+                >
+                    <Layer
+                        id="stops"
+                        type="circle"
+                        source="stops"
+                        paint={{
+                            "circle-color": "#ED1D24",
+                            "circle-radius": 4,
+                            "circle-stroke-width": 1,
+                            "circle-stroke-color": "#fff",
+                        }}
+                    />
+                </Source>
+            </MapGL>
             <Content>
                 <KMBRouteStops
                     route={routeData}
