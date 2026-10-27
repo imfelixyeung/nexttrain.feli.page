@@ -3,7 +3,9 @@ import Link from "next/link";
 import { getLocale } from "next-intl/server";
 import type { Route } from "@/api/bus/kmb/schemas/route";
 import { getRoutes } from "@/api/bus/kmb/server";
-import { LocalisedString } from "@/i18n/utils";
+import Hero from "@/components/hero";
+import { KMBRoute } from "@/components/kmb/route";
+import Content from "@/components/content";
 
 const Page = async () => {
     const routes = await getRoutes();
@@ -19,23 +21,24 @@ const Page = async () => {
 
     return (
         <div>
-            <Typography.Heading level={1}>KMB Routes</Typography.Heading>
-            <div className="grid grid-cols-2">
-                {routesByRoutes
-                    .entries()
-                    .map(([route, routes]: [string, Route[]]) => (
+            <Hero
+                title={
+                    <Typography.Heading level={1}>
+                        KMB Routes
+                    </Typography.Heading>
+                }
+            />
+            <Content>
+                {[...routesByRoutes].map(
+                    ([route, routes]: [string, Route[]]) => (
                         <div key={route}>
                             <Typography.Heading level={2}>
                                 {route}
                             </Typography.Heading>
                             <ul>
-                                {routes.map(
-                                    ({
-                                        bound,
-                                        serviceType,
-                                        origin,
-                                        destination,
-                                    }) => (
+                                {routes.map((routeData) => {
+                                    const { bound, serviceType } = routeData;
+                                    return (
                                         <li
                                             key={`${route}-${bound}-${serviceType}`}
                                         >
@@ -44,22 +47,16 @@ const Page = async () => {
                                                     `/${locale}/bus/kmb/routes/${route}/bound/${bound}/service-type/${serviceType}/stops` as const
                                                 }
                                             >
-                                                {route}
-                                                <LocalisedString
-                                                    string={origin}
-                                                />{" "}
-                                                {"->"}{" "}
-                                                <LocalisedString
-                                                    string={destination}
-                                                />
+                                                <KMBRoute route={routeData} />
                                             </Link>
                                         </li>
-                                    ),
-                                )}
+                                    );
+                                })}
                             </ul>
                         </div>
-                    ))}
-            </div>
+                    ),
+                )}
+            </Content>
         </div>
     );
 };

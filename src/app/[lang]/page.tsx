@@ -1,4 +1,4 @@
-import { Surface, Typography } from "@heroui/react";
+import { buttonVariants, Chip, Surface, Typography } from "@heroui/react";
 import Link from "next/link";
 import { getLocale, getTranslations } from "next-intl/server";
 import { stations } from "@/data/light-rail";
@@ -59,6 +59,12 @@ const IndexPage = async () => {
                         ))}
                     </ul>
                 </Surface>
+            </div>
+
+            <div className="container mx-auto">
+                <Link href={`/${locale}/bus/kmb`} className={buttonVariants()}>
+                    KMB <Chip>Beta</Chip>
+                </Link>
             </div>
         </div>
     );

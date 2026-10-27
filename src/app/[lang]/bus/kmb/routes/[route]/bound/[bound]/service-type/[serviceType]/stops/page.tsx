@@ -4,6 +4,8 @@ import {
     getRoutes,
     getStops,
 } from "@/api/bus/kmb/server";
+import Content from "@/components/content";
+import Hero from "@/components/hero";
 import { KMBRoute } from "@/components/kmb/route";
 import { KMBRouteStops } from "@/components/kmb/route-stops";
 
@@ -31,20 +33,20 @@ const Page = async ({
 
     return (
         <>
-            <div className="py-8 border-b">
-                <div className="container mx-auto">
+            <Hero
+                title={
                     <h1>
                         <KMBRoute route={routeData} />
                     </h1>
-                </div>
-            </div>
-            <div className="container mx-auto py-8">
+                }
+            />
+            <Content>
                 <KMBRouteStops
                     route={routeData}
                     routeStops={routeStops.data}
                     stops={stops.data}
                 />
-            </div>
+            </Content>
         </>
     );
 };

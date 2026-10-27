@@ -31,7 +31,7 @@ export const KMBRouteStops = ({
         <ul className="grid grid-cols-[auto_1fr]">
             {routeStops.map((routeStop, index, routeStops) => {
                 const stop = stops.find((s) => s.stop === routeStop.stop);
-                if (!stop) return <Fragment key={routeStop.stop} />;
+                if (!stop) return <Fragment key={routeStop.seq} />;
 
                 const firstStop = index === 0;
                 const lastStop = routeStops.length - 1 === index;
@@ -40,7 +40,7 @@ export const KMBRouteStops = ({
 
                 return (
                     <li
-                        key={routeStop.stop}
+                        key={routeStop.seq}
                         className="grid grid-cols-subgrid col-span-2 gap-3"
                     >
                         <div
