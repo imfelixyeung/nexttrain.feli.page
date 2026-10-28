@@ -4,15 +4,14 @@ import type { FeatureCollection } from "geojson";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useQuery } from "@tanstack/react-query";
 import { useGeolocation } from "@uidotdev/usehooks";
-import { LocateFixedIcon } from "lucide-react";
 import { setWorkerUrl } from "maplibre-gl";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef } from "react";
 import MapGL, {
+    GeolocateControl,
     Layer,
     type MapRef,
-    Marker,
     Source,
 } from "react-map-gl/maplibre";
 import { getStops } from "@/api/bus/kmb";
@@ -91,15 +90,10 @@ export const NearbyBusStopsInner = ({ stops }: { stops: StopList["data"] }) => {
                 style={{ width: "100%", height: 400 }}
                 mapStyle="https://tiles.openfreemap.org/styles/liberty"
             >
-                {target && (
-                    <Marker
-                        longitude={target.longitude}
-                        latitude={target.latitude}
-                        anchor="center"
-                    >
-                        <LocateFixedIcon size={14} className="text-black" />
-                    </Marker>
-                )}
+                <GeolocateControl
+                    positionOptions={{ enableHighAccuracy: true }}
+                    trackUserLocation
+                />
                 <Source
                     id="clustered-stops"
                     type="geojson"

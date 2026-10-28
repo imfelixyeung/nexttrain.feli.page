@@ -7,7 +7,12 @@ import { LngLat, LngLatBounds, setWorkerUrl } from "maplibre-gl";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useEffect, useMemo, useRef } from "react";
-import MapGL, { Layer, type MapRef, Source } from "react-map-gl/maplibre";
+import MapGL, {
+    GeolocateControl,
+    Layer,
+    type MapRef,
+    Source,
+} from "react-map-gl/maplibre";
 import { kmbQueries } from "@/api/bus/kmb/queries";
 import Hero from "@/components/hero";
 import { KMBRoute } from "@/components/kmb/route";
@@ -119,6 +124,10 @@ export const LayoutClient = ({ children }: { children: ReactNode }) => {
                 style={{ width: "100%", height: 300 }}
                 mapStyle="https://tiles.openfreemap.org/styles/liberty"
             >
+                <GeolocateControl
+                    positionOptions={{ enableHighAccuracy: true }}
+                    trackUserLocation
+                />
                 {routeLine && (
                     <Source
                         id="route-line"
