@@ -36,6 +36,7 @@ const syncFile = async (key: string, data: string) => {
         Bucket: env.S3_BUCKET,
         Key: key,
         Body: data,
+        CacheControl: "public, max-age=86400",
     });
 
     await s3.send(command);
