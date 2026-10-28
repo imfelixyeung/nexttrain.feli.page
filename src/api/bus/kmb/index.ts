@@ -1,3 +1,4 @@
+import { getMirrorURL } from "@/api/mirror";
 import { etaListSchema } from "./schemas/eta";
 import { routeListSchema } from "./schemas/route";
 import { routeLineSchema } from "./schemas/route-line";
@@ -5,23 +6,16 @@ import { routeStopsResponseSchema } from "./schemas/route-stop";
 import { stopItemSchema, stopListSchema } from "./schemas/stop";
 
 const BASE_URL = "https://data.etabus.gov.hk/";
-const MIRROR_URL = "https://cdn.transit.feli.page/";
 
 export const getRoutes = async () => {
-    const url = new URL(
-        "/data.gov.hk/mirror/data.etabus.gov.hk/v1/transport/kmb/route",
-        MIRROR_URL,
-    );
+    const url = getMirrorURL(new URL("/v1/transport/kmb/route", BASE_URL));
     const response = await fetch(url);
     const json = await response.json();
     return routeListSchema.parseAsync(json);
 };
 
 export const getStops = async () => {
-    const url = new URL(
-        "/data.gov.hk/mirror/data.etabus.gov.hk/v1/transport/kmb/stop",
-        MIRROR_URL,
-    );
+    const url = getMirrorURL(new URL("/v1/transport/kmb/stop", BASE_URL));
     const response = await fetch(url);
     const json = await response.json();
     return stopListSchema.parseAsync(json);
@@ -35,10 +29,7 @@ export const getStop = async ({ stop }: { stop: string }) => {
 };
 
 export const getRouteStops = async () => {
-    const url = new URL(
-        "/data.gov.hk/mirror/data.etabus.gov.hk/v1/transport/kmb/route-stop",
-        MIRROR_URL,
-    );
+    const url = getMirrorURL(new URL("/v1/transport/kmb/route-stop", BASE_URL));
     const response = await fetch(url);
     const json = await response.json();
     return routeStopsResponseSchema.parseAsync(json);

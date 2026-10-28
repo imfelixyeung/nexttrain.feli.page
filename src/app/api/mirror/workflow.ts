@@ -1,22 +1,23 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { sleep } from "workflow";
+import { getMirrorURL } from "@/api/mirror";
 import { env } from "@/env";
 
 const mirrors = [
     {
+        source: "https://opendata.mtr.com.hk/data/mtr_bus_stops.csv",
+    },
+    {
+        source: "https://opendata.mtr.com.hk/data/mtr_bus_routes.csv",
+    },
+    {
         source: "https://data.etabus.gov.hk/v1/transport/kmb/route",
-        destination:
-            "data.gov.hk/mirror/data.etabus.gov.hk/v1/transport/kmb/route",
     },
     {
         source: "https://data.etabus.gov.hk/v1/transport/kmb/stop",
-        destination:
-            "data.gov.hk/mirror/data.etabus.gov.hk/v1/transport/kmb/stop",
     },
     {
         source: "https://data.etabus.gov.hk/v1/transport/kmb/route-stop",
-        destination:
-            "data.gov.hk/mirror/data.etabus.gov.hk/v1/transport/kmb/route-stop",
     },
 ];
 
@@ -46,7 +47,8 @@ const syncMirror = async (
     mirror: (typeof mirrors)[number] & { status: string },
 ) => {
     "use step";
-    const { source, destination } = mirror;
+    const { source } = mirror;
+    const destination = getMirrorURL(new URL(source));
 
     const response = await fetch(source);
     if (!response.ok) {
@@ -57,7 +59,7 @@ const syncMirror = async (
     const data = await response.text();
 
     try {
-        await syncFile(destination, data);
+        await syncFile(destination.toString(), data);
         mirror.status = "success";
     } catch (error) {
         console.error(`Failed to upload ${destination}:`, error);

@@ -78,7 +78,7 @@ export const LayoutClient = ({ children }: { children: ReactNode }) => {
                     currentStop.stop.longitude,
                     currentStop.stop.latitude,
                 ),
-                zoom: 14,
+                zoom: 15,
             });
             return;
         }
