@@ -140,6 +140,7 @@ export const NearbyBusStopsInner = ({ stops }: { stops: StopList["data"] }) => {
                             <Link
                                 // @ts-expect-error FIXME
                                 href={`/${locale}/bus/kmb/stops/${stop}`}
+                                prefetch={false}
                             >
                                 {name[locale]}
                             </Link>

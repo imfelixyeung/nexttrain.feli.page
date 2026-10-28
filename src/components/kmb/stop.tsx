@@ -11,6 +11,7 @@ const KMBStop = ({ route, stop }: { route: Route; stop: Stop }) => {
     return (
         <Link
             href={`/${locale}/bus/kmb/routes/${route.route}/bound/${route.bound}/service-type/${route.serviceType}/stops/${stop.stop}`}
+            prefetch={false}
             scroll={false}
         >
             <LocalisedString string={stop.name} transform="capital" />

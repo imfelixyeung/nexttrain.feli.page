@@ -12,6 +12,7 @@ export const KMBRoute = ({ route: r }: { route: Route }) => {
     return (
         <Link
             href={`/${locale}/bus/kmb/routes/${route}/bound/${bound}/service-type/${serviceType}/stops`}
+            prefetch={false}
             className="flex items-center gap-2"
         >
             <KMBRouteBadge route={route} />

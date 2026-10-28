@@ -27,6 +27,7 @@ const IndexPage = async () => {
                                 ></div>
                                 <Link
                                     href={createLineLink({ line, locale })}
+                                    prefetch={false}
                                     className="mr-6 block w-full px-4 py-2 hover:font-semibold hover:underline"
                                 >
                                     {t(`mtr.lines.${line}`)}
@@ -51,6 +52,7 @@ const IndexPage = async () => {
                                         stationId: station.id,
                                         locale,
                                     })}
+                                    prefetch={false}
                                     className="mr-6 block w-full px-4 py-2 hover:font-semibold hover:underline"
                                 >
                                     {t(`light-rail.stations.${station.id}`)}
